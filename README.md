@@ -13,7 +13,7 @@ commands, or the selected experiment.
 
 ## Two-minute judge path
 
-1. Download and extract `MoEAutopilotStudio-0.1.0-win-x64.zip` from Releases.
+1. Download and extract the latest Windows x64 ZIP from Releases.
 2. Run `MoEAutopilotStudio.exe`. No Python, GPU, model, or Codex is required.
 3. Open `Coder-Next: prefill versus decode` and select `Total latency`.
 4. Compare the default chat workload with a prompt-heavy workload such as
