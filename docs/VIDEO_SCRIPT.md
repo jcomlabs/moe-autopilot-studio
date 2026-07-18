@@ -1,33 +1,32 @@
-# Video Script (under three minutes)
+# Build Week Video
 
-## 0:00-0:25 - The decision
+The final English demo is 1:49, with narrated audio and captions. Its locked
+script, storyboard, real application captures, audio metadata, and HyperFrames
+composition are archived under
+`videos/moe-autopilot-studio-build-week/`.
 
-Open the Windows ZIP and launch Studio. Show that the first screen is the
-working laboratory, not a landing page. State the question: should this MoE
-workload enable the measured hot-expert split?
+## Narrative
 
-## 0:25-1:10 - Deterministic evidence
+1. Faster decode can make a complete workload slower.
+2. The same measured split changes from `ENABLE` to `DISABLE` when only the
+   prompt/output shape changes.
+3. `ProtocolFingerprint` prevents invalid cross-build arithmetic.
+4. GPT-5.6 explains the bounded deterministic report through Codex App Server;
+   it does not calculate or overwrite the verdict.
+5. The safe Windows runner preserves executable, argv, environment, timeout,
+   outputs, VRAM, cancellation, and process ownership.
+6. The closing frame distinguishes pre-Build Week measurements from the Studio
+   product built with Codex during Build Week.
 
-Use Coder-Next session transfer. Point to 68.56% coverage, +22.22% decode, VRAM,
-and the protocol-compatible recommendation. Show the legacy row being blocked
-by its fingerprint. Switch to end-to-end and change to 16,000 prompt / 300
-output tokens so the verdict changes to DISABLE.
+## Master
 
-## 1:10-1:45 - GPT-5.6 Sol
+- File: `MoE-Autopilot-Studio-Build-Week-demo.mp4`
+- Duration: 109.0 seconds
+- Video: H.264 High, 1920x1080, 30 fps
+- Audio: AAC stereo, 48 kHz, -16.02 LUFS, -1.43 dBTP
+- SHA-256: `52d8a1cedb4a2e9111e21056ea526c57fbd5063bc27713b3329086941a6a89b7`
+- Music: none
+- Voice: locally generated Kokoro `af_heart`
 
-Show the ChatGPT-connected state and press Explain. State that OAuth and model
-access are handled by Codex App Server. Compare the returned experiment ID with
-the deterministic recommendation and show that GPT explains but does not
-calculate.
-
-## 1:45-2:20 - Reproducibility
-
-Open Evidence, show measured grades, immutable build IDs, and source SHA-256.
-Export the self-contained HTML report. Mention that fixtures contain no prompt
-text and the same offline path works without Codex, GPU, model, or Python.
-
-## 2:20-2:50 - Real Windows path
-
-Open Runs, show the structured baseline/split command and queue state. State
-that it is argv-only, sequential, timeout-bound, and restricted to known
-llama.cpp tools. End on the candidate matrix and the next experiment.
+The public YouTube URL is an entrant-account action and must be added to
+`docs/SUBMISSION.md` and the Devpost form before submission.

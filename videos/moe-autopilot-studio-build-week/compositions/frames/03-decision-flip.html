@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .compare-card{position:absolute;top:150px;width:790px;height:560px;border:2px solid #102018;background:#ffffff;overflow:hidden}.compare-card.left{left:100px}.compare-card.right{right:100px}.compare-card img{width:100%;height:494px;object-fit:cover;object-position:top}.compare-card strong{position:absolute;left:24px;bottom:10px;font:400 52px Georgia,serif}.compare-card small{position:absolute;left:164px;bottom:22px;font:600 16px 'JetBrains Mono',monospace;letter-spacing:.1em}
+      .constant{position:absolute;left:690px;top:755px;width:520px;padding:22px 30px;background:#19422e;color:#ffffff;display:flex;align-items:center;gap:26px}.constant b{font-size:76px;color:#dff3e9}.constant span{font:600 18px 'JetBrains Mono',monospace;letter-spacing:.1em}
+      .regress{position:absolute;right:100px;top:755px;width:430px;padding:22px;border:2px solid #b83a32;background:#ffffff}.regress b{display:block;font:400 82px Georgia,serif;color:#b83a32}.regress span{font:600 16px 'JetBrains Mono',monospace;letter-spacing:.1em}
+      .disable-stamp{position:absolute;left:100px;top:790px;padding:22px 38px;border:4px solid #b83a32;color:#b83a32;font-size:36px;letter-spacing:.16em;transform:rotate(-3deg)}
+
+</style>
+<div id="root" data-composition-id="03-decision-flip" data-width="1920" data-height="1080" data-duration="15.275">
+      <div class="ground paper"></div><div class="topbar"><span>CONTROLLED COMPARISON / 03</span><span>SAME MODEL / SAME SPLIT</span></div>
+      <div id="compare-left" class="compare-card left"><img src="assets/studio-enable.png" alt="ENABLE at short prompt"><strong>500</strong><small>PROMPT TOKENS</small></div>
+      <div id="compare-right" class="compare-card right"><img src="assets/studio-disable.png" alt="DISABLE at long prompt"><strong>16000</strong><small>PROMPT TOKENS</small></div>
+      <div id="constant" class="constant serif"><b>68.6%</b><span>COVERAGE<br>UNCHANGED</span></div>
+      <div id="regress" class="regress"><b>+3.9%</b><span>PREFILL DOMINATES</span></div>
+      <div id="disable-stamp" class="disable-stamp mono">DISABLE</div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#compare-left",{opacity:0,x:-180,rotateY:18},{opacity:1,x:0,rotateY:0,duration:1.1,ease:"power3.out"},.3)
+        .fromTo("#compare-right",{opacity:0,x:180,rotateY:-18},{opacity:1,x:0,rotateY:0,duration:1.1,ease:"power3.out"},1.0)
+        .fromTo("#constant",{opacity:0,y:40},{opacity:1,y:0,duration:.9,ease:"power3.out"},7.1)
+        .fromTo("#regress",{opacity:0,x:100},{opacity:1,x:0,duration:.9,ease:"power3.out"},12.2)
+        .fromTo("#disable-stamp",{opacity:0,scale:1.7,filter:"blur(5px)"},{opacity:1,scale:1,filter:"blur(0px)",duration:.55,ease:"power3.out"},14.35);tl.to({}, {duration:15.275}, 0);window.__timelines["03-decision-flip"]=tl;</script>
+</template></body></html>

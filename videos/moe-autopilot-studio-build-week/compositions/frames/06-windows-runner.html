@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .runs-window{position:absolute;left:105px;top:145px;width:1440px;height:810px;border:2px solid #102018;background:#ffffff;overflow:hidden}.runs-window img{width:100%;height:100%;object-fit:cover;object-position:top}
+      .argv-cards{position:absolute;right:80px;top:220px;display:grid;gap:12px;width:320px}.argv-cards span{padding:20px 24px;background:#19422e;color:#dff3e9;font-size:21px;letter-spacing:.08em}
+      .no-shell{position:absolute;right:78px;top:500px;padding:20px 26px;border:3px solid #b83a32;color:#b83a32;font-size:18px;letter-spacing:.08em}.no-shell:after{content:"";position:absolute;left:-10px;right:-10px;top:50%;height:3px;background:#b83a32;transform:rotate(-7deg)}
+      .runner-foot{position:absolute;left:105px;right:105px;bottom:165px;min-height:58px;display:flex;justify-content:space-between;align-items:flex-start;border-top:2px solid #176b4b;padding-top:17px;color:#19422e;font-size:18px;letter-spacing:.1em}
+
+</style>
+<div id="root" data-composition-id="06-windows-runner" data-width="1920" data-height="1080" data-duration="14.571">
+      <div class="ground paper"></div><div class="topbar"><span>LOCAL EXPERIMENT QUEUE / 06</span><span>WINDOWS</span></div>
+      <div id="runs-window" class="runs-window"><img src="assets/studio-runs.png" alt="Safe Windows experiment runner"></div>
+      <div id="argv-cards" class="argv-cards mono"><span>executable</span><span>argv[]</span><span>env{}</span></div>
+      <div id="no-shell" class="no-shell mono">SHELL STRING</div>
+      <div id="runner-foot" class="runner-foot mono"><span>TIMEOUT</span><span>OUTPUTS</span><span>VRAM</span><span>CANCEL</span><span>OWNERSHIP</span></div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#runs-window",{opacity:0,y:60},{opacity:1,y:0,duration:1,ease:"power3.out"},.2)
+        .fromTo("#argv-cards span",{opacity:0,x:90},{opacity:1,x:0,duration:.55,stagger:.55,ease:"power3.out"},3.6)
+        .fromTo("#no-shell",{opacity:0,scale:1.3},{opacity:1,scale:1,duration:.55,ease:"power3.out"},7.0)
+        .to("#no-shell",{x:420,opacity:0,duration:.65,ease:"power3.in"},8.2)
+        .fromTo("#runner-foot span",{opacity:0,y:22},{opacity:1,y:0,duration:.45,stagger:.4,ease:"power3.out"},10.0);tl.to({}, {duration:14.571}, 0);window.__timelines["06-windows-runner"]=tl;</script>
+</template></body></html>

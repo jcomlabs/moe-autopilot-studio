@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .hook-wrap{position:absolute;left:120px;right:120px;top:170px;bottom:120px}
+      .hook-line{font-size:156px;line-height:.9;color:#ffffff;white-space:nowrap}.hook-line span{color:#dff3e9}
+      .speed-rule{position:absolute;left:4px;top:190px;width:1170px;height:8px;background:#ffffff24}.speed-rule i{display:block;width:100%;height:100%;background:#dff3e9;transform-origin:left}
+      .hook-small{position:absolute;left:8px;top:270px;font-size:30px;color:#dff3e9;letter-spacing:.16em}
+      .hook-payoff{position:absolute;left:0;top:330px;font-size:124px;line-height:.88;color:#ffffff}.hook-payoff em{font-style:normal;color:#dff3e9}
+      .hook-final{position:absolute;right:0;bottom:130px;padding:20px 26px;border:2px solid #dff3e9;color:#dff3e9;font-size:25px;letter-spacing:.12em}
+
+</style>
+<div id="root" data-composition-id="01-wrong-question" data-width="1920" data-height="1080" data-duration="5.931">
+      <div class="ground dark"></div>
+      <div class="topbar light"><span>MOE AUTOPILOT / 01</span><span>WORKLOAD > NUMBER</span></div>
+      <div class="hook-wrap">
+        <div id="hook-a" class="hook-line serif">FASTER <span>DECODE</span></div>
+        <div id="hook-rule" class="speed-rule"><i></i></div>
+        <div id="hook-b" class="hook-small mono">CAN MAKE</div>
+        <div id="hook-c" class="hook-payoff serif">THE WORKLOAD<br><em>SLOWER</em></div>
+        <div id="hook-final" class="hook-final mono">THE WORKLOAD IS THE DECISION</div>
+      </div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#hook-a",{opacity:0,y:70},{opacity:1,y:0,duration:1.1,ease:"power3.out"},0.25)
+        .fromTo("#hook-rule i",{scaleX:0},{scaleX:1,duration:1.1,ease:"power3.out"},1.0)
+        .fromTo("#hook-b",{opacity:0,x:-30},{opacity:1,x:0,duration:.65,ease:"power3.out"},2.7)
+        .fromTo("#hook-c",{opacity:0,y:90,filter:"blur(8px)"},{opacity:1,y:0,filter:"blur(0px)",duration:1.15,ease:"power3.out"},3.6)
+        .fromTo("#hook-final",{opacity:0,scaleX:.6,transformOrigin:"right center"},{opacity:1,scaleX:1,duration:.75,ease:"power3.out"},4.75);tl.to({}, {duration:5.931}, 0);window.__timelines["01-wrong-question"]=tl;</script>
+</template></body></html>

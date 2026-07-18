@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .window-shot{position:absolute;left:170px;top:118px;width:1440px;height:900px;border:2px solid #102018;background:#ffffff;overflow:hidden}.window-shot img{width:100%;height:100%;object-fit:cover}
+      .pill-row{position:absolute;left:122px;top:190px;display:flex;gap:12px}.pill-row span{padding:12px 16px;background:#19422e;color:#ffffff;font:600 20px 'JetBrains Mono',monospace;letter-spacing:.08em}
+      .kpi{position:absolute;right:95px;top:260px;width:420px;padding:32px;border:2px solid #176b4b;background:#ffffff}.kpi b{display:block;font:400 112px/1 Georgia,serif}.kpi small{font:600 20px 'JetBrains Mono',monospace;letter-spacing:.12em}
+      .green-kpi b{color:#176b4b}
+      .lockline{position:absolute;right:95px;bottom:165px;display:flex;gap:22px;align-items:center;padding:16px 20px;background:#19422e;color:#ffffff;font-size:18px}.lockline span{color:#dff3e9}.lockline code{font-size:16px}
+
+</style>
+<div id="root" data-composition-id="02-measured-enable" data-width="1920" data-height="1080" data-duration="14.123">
+      <div class="ground paper"></div><div class="topbar"><span>MEASURED VERDICT / 02</span><span>CODER-NEXT</span></div>
+      <div id="enable-window" class="window-shot"><img src="assets/studio-enable.png" alt="Real Studio ENABLE analysis"></div>
+      <div id="input-pills" class="pill-row"><span>500 PROMPT</span><span>300 OUTPUT</span></div>
+      <div id="enable-kpi" class="kpi green-kpi"><b>-4.4%</b><small>TOTAL LATENCY</small></div>
+      <div id="enable-lock" class="lockline mono"><span>ENABLE</span><span>MEASURED</span><code>8d00bad838c14baa</code></div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#enable-window",{opacity:0,y:80,scale:.96},{opacity:1,y:0,scale:1,duration:1.2,ease:"power3.out"},.2)
+        .fromTo("#input-pills span",{opacity:0,y:24},{opacity:1,y:0,duration:.6,stagger:.35,ease:"power3.out"},3.6)
+        .fromTo("#enable-kpi",{opacity:0,x:160},{opacity:1,x:0,duration:1,ease:"power3.out"},8.6)
+        .fromTo("#enable-lock",{opacity:0,scaleX:.5,transformOrigin:"right center"},{opacity:1,scaleX:1,duration:.8,ease:"power3.out"},11.8);tl.to({}, {duration:14.123}, 0);window.__timelines["02-measured-enable"]=tl;</script>
+</template></body></html>

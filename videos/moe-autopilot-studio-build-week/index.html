@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=1920,height=1080"><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script><style>*{margin:0;padding:0;box-sizing:border-box}html,body,#root{width:1920px;height:1080px;overflow:hidden;background:#19422e}.scene{position:absolute;inset:0;width:1920px;height:1080px}</style></head><body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="108.951" data-width="1920" data-height="1080">
+    <div id="scene-01" class="scene" data-composition-id="01-wrong-question" data-composition-src="compositions/frames/01-wrong-question.html" data-start="0" data-duration="5.931" data-track-index="0"></div>
+    <audio id="voice-01" src="assets/voice/01.wav" data-start="0" data-duration="5.931" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-02" class="scene" data-composition-id="02-measured-enable" data-composition-src="compositions/frames/02-measured-enable.html" data-start="5.931" data-duration="14.123" data-track-index="1"></div>
+    <audio id="voice-02" src="assets/voice/02.wav" data-start="5.931" data-duration="14.123" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-03" class="scene" data-composition-id="03-decision-flip" data-composition-src="compositions/frames/03-decision-flip.html" data-start="20.054" data-duration="15.275" data-track-index="0"></div>
+    <audio id="voice-03" src="assets/voice/03.wav" data-start="20.054" data-duration="15.275" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-04" class="scene" data-composition-id="04-protocol-guard" data-composition-src="compositions/frames/04-protocol-guard.html" data-start="35.329" data-duration="15.701" data-track-index="1"></div>
+    <audio id="voice-04" src="assets/voice/04.wav" data-start="35.329" data-duration="15.701" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-05" class="scene" data-composition-id="05-bounded-advisor" data-composition-src="compositions/frames/05-bounded-advisor.html" data-start="51.03" data-duration="15.979" data-track-index="0"></div>
+    <audio id="voice-05" src="assets/voice/05.wav" data-start="51.03" data-duration="15.979" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-06" class="scene" data-composition-id="06-windows-runner" data-composition-src="compositions/frames/06-windows-runner.html" data-start="67.009" data-duration="14.571" data-track-index="1"></div>
+    <audio id="voice-06" src="assets/voice/06.wav" data-start="67.009" data-duration="14.571" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-07" class="scene" data-composition-id="07-build-week-boundary" data-composition-src="compositions/frames/07-build-week-boundary.html" data-start="81.58" data-duration="17.792" data-track-index="0"></div>
+    <audio id="voice-07" src="assets/voice/07.wav" data-start="81.58" data-duration="17.792" data-track-index="10" data-volume="1"></audio>
+
+    <div id="scene-08" class="scene" data-composition-id="08-reproduce" data-composition-src="compositions/frames/08-reproduce.html" data-start="99.372" data-duration="9.579" data-track-index="1"></div>
+    <audio id="voice-08" src="assets/voice/08.wav" data-start="99.372" data-duration="9.579" data-track-index="10" data-volume="1"></audio>
+  <div id="captions" class="scene" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="108.951" data-track-index="100"></div>
+</div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});tl.to("#scene-01",{scale:2.2,opacity:0,filter:"blur(8px)",duration:.45,ease:"power3.in"},5.931).fromTo("#scene-02",{scale:.55,opacity:0,filter:"blur(8px)"},{scale:1,opacity:1,filter:"blur(0px)",duration:.45,ease:"power3.out"},5.931);
+tl.to("#scene-02",{x:-1920,duration:.5,ease:"power3.inOut"},20.054).fromTo("#scene-03",{x:1920},{x:0,duration:.5,ease:"power3.inOut"},20.054);
+tl.to("#scene-03",{scale:2.2,opacity:0,filter:"blur(8px)",duration:.45,ease:"power3.in"},35.329).fromTo("#scene-04",{scale:.55,opacity:0,filter:"blur(8px)"},{scale:1,opacity:1,filter:"blur(0px)",duration:.45,ease:"power3.out"},35.329);
+tl.to("#scene-04",{opacity:0,duration:.45,ease:"power2.inOut"},51.03).fromTo("#scene-05",{opacity:0},{opacity:1,duration:.45,ease:"power2.inOut"},51.03);
+tl.to("#scene-05",{x:-1920,duration:.5,ease:"power3.inOut"},67.009).fromTo("#scene-06",{x:1920},{x:0,duration:.5,ease:"power3.inOut"},67.009);
+tl.to("#scene-06",{scale:2.2,opacity:0,filter:"blur(8px)",duration:.45,ease:"power3.in"},81.58).fromTo("#scene-07",{scale:.55,opacity:0,filter:"blur(8px)"},{scale:1,opacity:1,filter:"blur(0px)",duration:.45,ease:"power3.out"},81.58);
+tl.to("#scene-07",{opacity:0,filter:"blur(8px)",duration:.5,ease:"power2.inOut"},99.372).fromTo("#scene-08",{opacity:0,filter:"blur(8px)"},{opacity:1,filter:"blur(0px)",duration:.5,ease:"power2.inOut"},99.372);tl.to({}, {duration:108.951}, 0);window.__timelines.main=tl;</script></body></html>

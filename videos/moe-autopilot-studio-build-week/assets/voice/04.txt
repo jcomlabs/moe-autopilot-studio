@@ -1,0 +1,1 @@
+The guardrail is protocol compatibility. The Studio joins prefill and decode only when model, build, flags, and instrument match. An older break-even near 2.3 is not blended in. The measured protocol recomputes 19.2.

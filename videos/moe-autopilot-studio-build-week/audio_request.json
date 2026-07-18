@@ -1,0 +1,45 @@
+{
+  "provider": "kokoro",
+  "speed": 1,
+  "lines": [
+    {
+      "id": "01",
+      "text": "Faster decode can make the whole workload slower. The setting is not the decision. The workload is."
+    },
+    {
+      "id": "02",
+      "text": "MoE Autopilot Studio turns measured local-inference evidence into a reproducible verdict. At five hundred prompt tokens and three hundred output tokens, this split improves total latency by 4.4 percent."
+    },
+    {
+      "id": "03",
+      "text": "Change only the prompt to sixteen thousand tokens. Coverage stays at 68.6 percent. Decode still improves. But prefill now dominates, so the same split regresses total latency by 3.9 percent. Disable it."
+    },
+    {
+      "id": "04",
+      "text": "The guardrail is protocol compatibility. The Studio joins prefill and decode only when model, build, flags, and instrument match. An older break-even near 2.3 is not blended in. The measured protocol recomputes 19.2."
+    },
+    {
+      "id": "05",
+      "text": "GPT-5.6 does the language work, not the arithmetic. Through Codex App Server and ChatGPT OAuth, it explains the structured report and proposes only experiments the engine already produced. The verdict cannot be overwritten."
+    },
+    {
+      "id": "06",
+      "text": "A decision can become a Windows experiment without becoming a shell string. Executables, arguments, and environment stay structured. Timeouts, outputs, VRAM, cancellation, and process ownership are captured for the next comparison."
+    },
+    {
+      "id": "07",
+      "text": "The measurements and llama.cpp work predate Build Week. The public Studio built this week adds the deterministic engine, fixture lab, imports, safe runner, exports, and bounded GPT-5.6 workflow. It works offline, with no GPU or model required."
+    },
+    {
+      "id": "08",
+      "text": "Do not trust the fastest number. Reproduce the decision. MoE Autopilot Studio is public now on GitHub, with a Windows release and fixture walkthrough."
+    }
+  ],
+  "bgm": {
+    "mode": "retrieve",
+    "query": "restrained minimal electronic pulse, precise and investigative",
+    "blob": "The fastest decode setting is not always the fastest workload",
+    "arc": "Demo Loop: question -> decision -> decision flip -> trust -> execution -> boundary -> CTA"
+  },
+  "voice": "af_heart"
+}

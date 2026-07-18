@@ -1,0 +1,1 @@
+Faster decode can make the whole workload slower. The setting is not the decision. The workload is.

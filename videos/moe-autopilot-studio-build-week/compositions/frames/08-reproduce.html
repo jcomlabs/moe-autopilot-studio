@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .fastest{position:absolute;left:125px;top:220px;color:#ffffff99;font-size:32px;letter-spacing:.13em}.strike{position:absolute;left:110px;top:239px;width:380px;height:5px;background:#b83a32;transform-origin:left}
+      .final-title{position:absolute;left:120px;top:320px;color:#ffffff;font-size:126px;line-height:.86}.final-title em{font-style:normal;color:#dff3e9}
+      .final-mark{position:absolute;right:155px;top:325px;width:210px;height:210px;border:4px solid #dff3e9;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#dff3e9;font-size:54px;letter-spacing:.06em}
+      .final-url{position:absolute;left:125px;bottom:245px;color:#dff3e9;font-size:27px;letter-spacing:.04em}.final-sub{position:absolute;left:125px;bottom:190px;color:#ffffff;font-size:18px;letter-spacing:.13em}.final-rule{position:absolute;left:125px;bottom:158px;width:1080px;height:3px;background:#dff3e9;transform-origin:left}
+
+</style>
+<div id="root" data-composition-id="08-reproduce" data-width="1920" data-height="1080" data-duration="9.579">
+      <div class="ground dark"></div><div class="topbar light"><span>MOE AUTOPILOT STUDIO / 08</span><span>PUBLIC NOW</span></div>
+      <div id="fastest" class="fastest mono">FASTEST NUMBER</div>
+      <div id="strike" class="strike"></div>
+      <div id="final-title" class="final-title serif">REPRODUCE<br>THE <em>DECISION</em></div>
+      <div id="final-mark" class="final-mark mono">MA</div>
+      <div id="final-url" class="final-url mono">github.com/jcomlabs/moe-autopilot-studio</div>
+      <div id="final-sub" class="final-sub mono">WINDOWS RELEASE + FIXTURE WALKTHROUGH</div><div id="final-rule" class="final-rule"></div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#fastest",{opacity:0,y:25},{opacity:1,y:0,duration:.7,ease:"power3.out"},.3)
+        .fromTo("#strike",{scaleX:0},{scaleX:1,duration:.55,ease:"power3.out"},1.7)
+        .fromTo("#final-title",{opacity:0,y:80,filter:"blur(7px)"},{opacity:1,y:0,filter:"blur(0px)",duration:1.1,ease:"power3.out"},2.8)
+        .fromTo("#final-mark",{opacity:0,scale:.2,rotate:-80},{opacity:1,scale:1,rotate:0,duration:1,ease:"power3.out"},4.2)
+        .fromTo("#final-url",{opacity:0,y:24},{opacity:1,y:0,duration:.7,ease:"power3.out"},6.2)
+        .fromTo("#final-sub",{opacity:0,y:20},{opacity:1,y:0,duration:.65,ease:"power3.out"},7.0)
+        .fromTo("#final-rule",{scaleX:0},{scaleX:1,duration:.7,ease:"power3.out"},7.3);tl.to({}, {duration:9.579}, 0);window.__timelines["08-reproduce"]=tl;</script>
+</template></body></html>

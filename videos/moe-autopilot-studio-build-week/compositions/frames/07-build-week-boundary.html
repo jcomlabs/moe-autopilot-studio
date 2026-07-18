@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .before-band{position:absolute;left:100px;top:155px;width:480px;height:690px;padding:38px;border:2px solid #102018;background:#ffffff}.before-band h2,.built-band h2{font:600 20px 'JetBrains Mono',monospace;letter-spacing:.13em}.before-band p{margin-top:44px;padding-top:18px;border-top:2px solid #cbd5ce;font:400 42px/1.1 Georgia,serif}
+      .built-band{position:absolute;left:610px;right:100px;top:155px;height:690px;padding:38px;background:#19422e;color:#ffffff}.built-band h2{color:#dff3e9}
+      .build-grid{position:absolute;left:38px;right:38px;top:110px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.build-grid span{height:150px;display:flex;align-items:flex-end;padding:20px;border:2px solid #dff3e9;color:#dff3e9;font-size:22px;letter-spacing:.09em}
+      .boundary-shot{position:absolute;right:130px;bottom:155px;width:690px;height:350px;border:2px solid #102018;overflow:hidden;background:#ffffff}.boundary-shot img{width:100%;height:100%;object-fit:cover;object-position:top}
+      .offline-foot{position:absolute;left:100px;right:100px;bottom:165px;display:flex;justify-content:space-between;border-top:2px solid #176b4b;padding-top:16px;color:#19422e;font-size:20px;letter-spacing:.14em}
+
+</style>
+<div id="root" data-composition-id="07-build-week-boundary" data-width="1920" data-height="1080" data-duration="17.792">
+      <div class="ground paper"></div><div class="topbar"><span>PROVENANCE / 07</span><span>OPENAI BUILD WEEK</span></div>
+      <section id="before-band" class="before-band"><h2>PRE-BUILD WEEK</h2><p>HISTORICAL MEASUREMENTS</p><p>LLAMA.CPP FORK</p></section>
+      <section id="built-band" class="built-band"><h2>BUILT THIS WEEK</h2><div class="build-grid mono"><span>ENGINE</span><span>FIXTURES</span><span>IMPORTS</span><span>RUNNER</span><span>EXPORTS</span><span>GPT-5.6</span></div></section>
+      <div id="boundary-shot" class="boundary-shot"><img src="assets/studio-enable.png" alt="Shipped Studio"></div>
+      <div id="offline-foot" class="offline-foot mono"><span>OFFLINE</span><span>NO GPU</span><span>NO MODEL</span></div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#before-band",{opacity:0,x:-80},{opacity:1,x:0,duration:.9,ease:"power3.out"},.3)
+        .fromTo("#built-band",{opacity:0,x:100},{opacity:1,x:0,duration:.9,ease:"power3.out"},2.0)
+        .fromTo("#built-band .build-grid span",{opacity:0,y:40},{opacity:1,y:0,duration:.5,stagger:.55,ease:"power3.out"},4.0)
+        .fromTo("#boundary-shot",{opacity:0,y:80},{opacity:1,y:0,duration:.9,ease:"power3.out"},10.0)
+        .fromTo("#offline-foot span",{opacity:0,y:18},{opacity:1,y:0,duration:.45,stagger:.5,ease:"power3.out"},13.3);tl.to({}, {duration:17.792}, 0);window.__timelines["07-build-week-boundary"]=tl;</script>
+</template></body></html>

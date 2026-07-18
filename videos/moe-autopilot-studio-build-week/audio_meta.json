@@ -1,0 +1,1250 @@
+{
+  "bgm": null,
+  "voices": [
+    {
+      "frame": 1,
+      "path": "assets/voice/01.wav",
+      "duration_s": 5.931,
+      "words": [
+        {
+          "text": "Faster",
+          "start": 0.08,
+          "end": 0.314
+        },
+        {
+          "text": "decode",
+          "start": 0.366,
+          "end": 0.6
+        },
+        {
+          "text": "can",
+          "start": 0.652,
+          "end": 0.861
+        },
+        {
+          "text": "make",
+          "start": 0.907,
+          "end": 1.125
+        },
+        {
+          "text": "the",
+          "start": 1.173,
+          "end": 1.383
+        },
+        {
+          "text": "whole",
+          "start": 1.429,
+          "end": 1.655
+        },
+        {
+          "text": "workload",
+          "start": 1.704,
+          "end": 1.955
+        },
+        {
+          "text": "slower.",
+          "start": 2.01,
+          "end": 2.549
+        },
+        {
+          "text": "The",
+          "start": 2.667,
+          "end": 2.877
+        },
+        {
+          "text": "setting",
+          "start": 2.923,
+          "end": 3.166
+        },
+        {
+          "text": "is",
+          "start": 3.219,
+          "end": 3.42
+        },
+        {
+          "text": "not",
+          "start": 3.464,
+          "end": 3.674
+        },
+        {
+          "text": "the",
+          "start": 3.72,
+          "end": 3.93
+        },
+        {
+          "text": "decision.",
+          "start": 3.976,
+          "end": 4.531
+        },
+        {
+          "text": "The",
+          "start": 4.653,
+          "end": 4.862
+        },
+        {
+          "text": "workload",
+          "start": 4.908,
+          "end": 5.159
+        },
+        {
+          "text": "is.",
+          "start": 5.214,
+          "end": 5.72
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 2,
+      "path": "assets/voice/02.wav",
+      "duration_s": 14.123,
+      "words": [
+        {
+          "text": "MoE",
+          "start": 0.08,
+          "end": 0.399
+        },
+        {
+          "text": "Autopilot",
+          "start": 0.469,
+          "end": 0.864
+        },
+        {
+          "text": "Studio",
+          "start": 0.951,
+          "end": 1.308
+        },
+        {
+          "text": "turns",
+          "start": 1.387,
+          "end": 1.731
+        },
+        {
+          "text": "measured",
+          "start": 1.807,
+          "end": 2.189
+        },
+        {
+          "text": "local-inference",
+          "start": 2.273,
+          "end": 2.732
+        },
+        {
+          "text": "evidence",
+          "start": 2.832,
+          "end": 3.215
+        },
+        {
+          "text": "into",
+          "start": 3.298,
+          "end": 3.63
+        },
+        {
+          "text": "a",
+          "start": 3.703,
+          "end": 3.997
+        },
+        {
+          "text": "reproducible",
+          "start": 4.062,
+          "end": 4.495
+        },
+        {
+          "text": "verdict.",
+          "start": 4.59,
+          "end": 5.423
+        },
+        {
+          "text": "At",
+          "start": 5.606,
+          "end": 5.913
+        },
+        {
+          "text": "five",
+          "start": 5.98,
+          "end": 6.312
+        },
+        {
+          "text": "hundred",
+          "start": 6.385,
+          "end": 6.755
+        },
+        {
+          "text": "prompt",
+          "start": 6.836,
+          "end": 7.193
+        },
+        {
+          "text": "tokens",
+          "start": 7.271,
+          "end": 7.629
+        },
+        {
+          "text": "and",
+          "start": 7.707,
+          "end": 8.026
+        },
+        {
+          "text": "three",
+          "start": 8.096,
+          "end": 8.441
+        },
+        {
+          "text": "hundred",
+          "start": 8.517,
+          "end": 8.886
+        },
+        {
+          "text": "output",
+          "start": 8.968,
+          "end": 9.325
+        },
+        {
+          "text": "tokens,",
+          "start": 9.403,
+          "end": 9.959
+        },
+        {
+          "text": "this",
+          "start": 10.081,
+          "end": 10.413
+        },
+        {
+          "text": "split",
+          "start": 10.486,
+          "end": 10.83
+        },
+        {
+          "text": "improves",
+          "start": 10.906,
+          "end": 11.288
+        },
+        {
+          "text": "total",
+          "start": 11.372,
+          "end": 11.717
+        },
+        {
+          "text": "latency",
+          "start": 11.792,
+          "end": 12.162
+        },
+        {
+          "text": "by",
+          "start": 12.243,
+          "end": 12.55
+        },
+        {
+          "text": "4.4",
+          "start": 12.617,
+          "end": 12.937
+        },
+        {
+          "text": "percent.",
+          "start": 13.007,
+          "end": 13.84
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 3,
+      "path": "assets/voice/03.wav",
+      "duration_s": 15.275,
+      "words": [
+        {
+          "text": "Change",
+          "start": 0.08,
+          "end": 0.405
+        },
+        {
+          "text": "only",
+          "start": 0.476,
+          "end": 0.778
+        },
+        {
+          "text": "the",
+          "start": 0.845,
+          "end": 1.135
+        },
+        {
+          "text": "prompt",
+          "start": 1.199,
+          "end": 1.524
+        },
+        {
+          "text": "to",
+          "start": 1.595,
+          "end": 1.874
+        },
+        {
+          "text": "sixteen",
+          "start": 1.935,
+          "end": 2.272
+        },
+        {
+          "text": "thousand",
+          "start": 2.346,
+          "end": 2.694
+        },
+        {
+          "text": "tokens.",
+          "start": 2.77,
+          "end": 3.517
+        },
+        {
+          "text": "Coverage",
+          "start": 3.681,
+          "end": 4.029
+        },
+        {
+          "text": "stays",
+          "start": 4.105,
+          "end": 4.418
+        },
+        {
+          "text": "at",
+          "start": 4.487,
+          "end": 4.766
+        },
+        {
+          "text": "68.6",
+          "start": 4.827,
+          "end": 5.129
+        },
+        {
+          "text": "percent.",
+          "start": 5.196,
+          "end": 5.954
+        },
+        {
+          "text": "Decode",
+          "start": 6.12,
+          "end": 6.445
+        },
+        {
+          "text": "still",
+          "start": 6.517,
+          "end": 6.83
+        },
+        {
+          "text": "improves.",
+          "start": 6.899,
+          "end": 7.669
+        },
+        {
+          "text": "But",
+          "start": 7.838,
+          "end": 8.128
+        },
+        {
+          "text": "prefill",
+          "start": 8.192,
+          "end": 8.528
+        },
+        {
+          "text": "now",
+          "start": 8.602,
+          "end": 8.893
+        },
+        {
+          "text": "dominates,",
+          "start": 8.956,
+          "end": 9.496
+        },
+        {
+          "text": "so",
+          "start": 9.615,
+          "end": 9.894
+        },
+        {
+          "text": "the",
+          "start": 9.955,
+          "end": 10.246
+        },
+        {
+          "text": "same",
+          "start": 10.309,
+          "end": 10.611
+        },
+        {
+          "text": "split",
+          "start": 10.678,
+          "end": 10.991
+        },
+        {
+          "text": "regresses",
+          "start": 11.06,
+          "end": 11.419
+        },
+        {
+          "text": "total",
+          "start": 11.498,
+          "end": 11.812
+        },
+        {
+          "text": "latency",
+          "start": 11.881,
+          "end": 12.217
+        },
+        {
+          "text": "by",
+          "start": 12.291,
+          "end": 12.57
+        },
+        {
+          "text": "3.9",
+          "start": 12.631,
+          "end": 12.922
+        },
+        {
+          "text": "percent.",
+          "start": 12.985,
+          "end": 13.744
+        },
+        {
+          "text": "Disable",
+          "start": 13.91,
+          "end": 14.247
+        },
+        {
+          "text": "it.",
+          "start": 14.32,
+          "end": 15.021
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 4,
+      "path": "assets/voice/04.wav",
+      "duration_s": 15.701,
+      "words": [
+        {
+          "text": "The",
+          "start": 0.08,
+          "end": 0.371
+        },
+        {
+          "text": "guardrail",
+          "start": 0.435,
+          "end": 0.795
+        },
+        {
+          "text": "is",
+          "start": 0.874,
+          "end": 1.153
+        },
+        {
+          "text": "protocol",
+          "start": 1.214,
+          "end": 1.563
+        },
+        {
+          "text": "compatibility.",
+          "start": 1.639,
+          "end": 2.467
+        },
+        {
+          "text": "The",
+          "start": 2.649,
+          "end": 2.94
+        },
+        {
+          "text": "Studio",
+          "start": 3.004,
+          "end": 3.329
+        },
+        {
+          "text": "joins",
+          "start": 3.401,
+          "end": 3.714
+        },
+        {
+          "text": "prefill",
+          "start": 3.783,
+          "end": 4.12
+        },
+        {
+          "text": "and",
+          "start": 4.194,
+          "end": 4.485
+        },
+        {
+          "text": "decode",
+          "start": 4.549,
+          "end": 4.874
+        },
+        {
+          "text": "only",
+          "start": 4.946,
+          "end": 5.248
+        },
+        {
+          "text": "when",
+          "start": 5.314,
+          "end": 5.617
+        },
+        {
+          "text": "model,",
+          "start": 5.683,
+          "end": 6.178
+        },
+        {
+          "text": "build,",
+          "start": 6.286,
+          "end": 6.781
+        },
+        {
+          "text": "flags,",
+          "start": 6.89,
+          "end": 7.384
+        },
+        {
+          "text": "and",
+          "start": 7.493,
+          "end": 7.784
+        },
+        {
+          "text": "instrument",
+          "start": 7.848,
+          "end": 8.219
+        },
+        {
+          "text": "match.",
+          "start": 8.3,
+          "end": 9.037
+        },
+        {
+          "text": "An",
+          "start": 9.198,
+          "end": 9.478
+        },
+        {
+          "text": "older",
+          "start": 9.539,
+          "end": 9.853
+        },
+        {
+          "text": "break-even",
+          "start": 9.922,
+          "end": 10.293
+        },
+        {
+          "text": "near",
+          "start": 10.375,
+          "end": 10.677
+        },
+        {
+          "text": "2.3",
+          "start": 10.743,
+          "end": 11.034
+        },
+        {
+          "text": "is",
+          "start": 11.098,
+          "end": 11.377
+        },
+        {
+          "text": "not",
+          "start": 11.439,
+          "end": 11.73
+        },
+        {
+          "text": "blended",
+          "start": 11.793,
+          "end": 12.13
+        },
+        {
+          "text": "in.",
+          "start": 12.204,
+          "end": 12.906
+        },
+        {
+          "text": "The",
+          "start": 13.06,
+          "end": 13.351
+        },
+        {
+          "text": "measured",
+          "start": 13.415,
+          "end": 13.763
+        },
+        {
+          "text": "protocol",
+          "start": 13.839,
+          "end": 14.188
+        },
+        {
+          "text": "recomputes",
+          "start": 14.264,
+          "end": 14.636
+        },
+        {
+          "text": "19.2.",
+          "start": 14.717,
+          "end": 15.442
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 5,
+      "path": "assets/voice/05.wav",
+      "duration_s": 15.979,
+      "words": [
+        {
+          "text": "GPT-5.6",
+          "start": 0.08,
+          "end": 0.437
+        },
+        {
+          "text": "does",
+          "start": 0.515,
+          "end": 0.836
+        },
+        {
+          "text": "the",
+          "start": 0.906,
+          "end": 1.214
+        },
+        {
+          "text": "language",
+          "start": 1.282,
+          "end": 1.651
+        },
+        {
+          "text": "work,",
+          "start": 1.732,
+          "end": 2.244
+        },
+        {
+          "text": "not",
+          "start": 2.356,
+          "end": 2.664
+        },
+        {
+          "text": "the",
+          "start": 2.732,
+          "end": 3.04
+        },
+        {
+          "text": "arithmetic.",
+          "start": 3.108,
+          "end": 3.949
+        },
+        {
+          "text": "Through",
+          "start": 4.133,
+          "end": 4.49
+        },
+        {
+          "text": "Codex",
+          "start": 4.569,
+          "end": 4.901
+        },
+        {
+          "text": "App",
+          "start": 4.974,
+          "end": 5.282
+        },
+        {
+          "text": "Server",
+          "start": 5.35,
+          "end": 5.695
+        },
+        {
+          "text": "and",
+          "start": 5.77,
+          "end": 6.078
+        },
+        {
+          "text": "ChatGPT",
+          "start": 6.146,
+          "end": 6.503
+        },
+        {
+          "text": "OAuth,",
+          "start": 6.581,
+          "end": 7.105
+        },
+        {
+          "text": "it",
+          "start": 7.22,
+          "end": 7.516
+        },
+        {
+          "text": "explains",
+          "start": 7.581,
+          "end": 7.95
+        },
+        {
+          "text": "the",
+          "start": 8.032,
+          "end": 8.34
+        },
+        {
+          "text": "structured",
+          "start": 8.407,
+          "end": 8.801
+        },
+        {
+          "text": "report",
+          "start": 8.887,
+          "end": 9.232
+        },
+        {
+          "text": "and",
+          "start": 9.308,
+          "end": 9.616
+        },
+        {
+          "text": "proposes",
+          "start": 9.683,
+          "end": 10.053
+        },
+        {
+          "text": "only",
+          "start": 10.134,
+          "end": 10.454
+        },
+        {
+          "text": "experiments",
+          "start": 10.524,
+          "end": 10.93
+        },
+        {
+          "text": "the",
+          "start": 11.019,
+          "end": 11.327
+        },
+        {
+          "text": "engine",
+          "start": 11.395,
+          "end": 11.739
+        },
+        {
+          "text": "already",
+          "start": 11.815,
+          "end": 12.172
+        },
+        {
+          "text": "produced.",
+          "start": 12.25,
+          "end": 13.067
+        },
+        {
+          "text": "The",
+          "start": 13.246,
+          "end": 13.554
+        },
+        {
+          "text": "verdict",
+          "start": 13.622,
+          "end": 13.979
+        },
+        {
+          "text": "cannot",
+          "start": 14.057,
+          "end": 14.402
+        },
+        {
+          "text": "be",
+          "start": 14.478,
+          "end": 14.774
+        },
+        {
+          "text": "overwritten.",
+          "start": 14.839,
+          "end": 15.692
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 6,
+      "path": "assets/voice/06.wav",
+      "duration_s": 14.571,
+      "words": [
+        {
+          "text": "A",
+          "start": 0.08,
+          "end": 0.333
+        },
+        {
+          "text": "decision",
+          "start": 0.388,
+          "end": 0.717
+        },
+        {
+          "text": "can",
+          "start": 0.789,
+          "end": 1.063
+        },
+        {
+          "text": "become",
+          "start": 1.124,
+          "end": 1.431
+        },
+        {
+          "text": "a",
+          "start": 1.498,
+          "end": 1.751
+        },
+        {
+          "text": "Windows",
+          "start": 1.806,
+          "end": 2.124
+        },
+        {
+          "text": "experiment",
+          "start": 2.194,
+          "end": 2.544
+        },
+        {
+          "text": "without",
+          "start": 2.621,
+          "end": 2.939
+        },
+        {
+          "text": "becoming",
+          "start": 3.009,
+          "end": 3.338
+        },
+        {
+          "text": "a",
+          "start": 3.41,
+          "end": 3.662
+        },
+        {
+          "text": "shell",
+          "start": 3.718,
+          "end": 4.014
+        },
+        {
+          "text": "string.",
+          "start": 4.079,
+          "end": 4.785
+        },
+        {
+          "text": "Executables,",
+          "start": 4.939,
+          "end": 5.471
+        },
+        {
+          "text": "arguments,",
+          "start": 5.588,
+          "end": 6.098
+        },
+        {
+          "text": "and",
+          "start": 6.21,
+          "end": 6.484
+        },
+        {
+          "text": "environment",
+          "start": 6.545,
+          "end": 6.906
+        },
+        {
+          "text": "stay",
+          "start": 6.985,
+          "end": 7.271
+        },
+        {
+          "text": "structured.",
+          "start": 7.333,
+          "end": 8.082
+        },
+        {
+          "text": "Timeouts,",
+          "start": 8.246,
+          "end": 8.746
+        },
+        {
+          "text": "outputs,",
+          "start": 8.855,
+          "end": 9.344
+        },
+        {
+          "text": "VRAM,",
+          "start": 9.451,
+          "end": 9.907
+        },
+        {
+          "text": "cancellation,",
+          "start": 10.007,
+          "end": 10.549
+        },
+        {
+          "text": "and",
+          "start": 10.669,
+          "end": 10.943
+        },
+        {
+          "text": "process",
+          "start": 11.003,
+          "end": 11.321
+        },
+        {
+          "text": "ownership",
+          "start": 11.391,
+          "end": 11.73
+        },
+        {
+          "text": "are",
+          "start": 11.805,
+          "end": 12.079
+        },
+        {
+          "text": "captured",
+          "start": 12.14,
+          "end": 12.468
+        },
+        {
+          "text": "for",
+          "start": 12.54,
+          "end": 12.815
+        },
+        {
+          "text": "the",
+          "start": 12.875,
+          "end": 13.15
+        },
+        {
+          "text": "next",
+          "start": 13.21,
+          "end": 13.495
+        },
+        {
+          "text": "comparison.",
+          "start": 13.558,
+          "end": 14.307
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 7,
+      "path": "assets/voice/07.wav",
+      "duration_s": 17.792,
+      "words": [
+        {
+          "text": "The",
+          "start": 0.08,
+          "end": 0.378
+        },
+        {
+          "text": "measurements",
+          "start": 0.443,
+          "end": 0.846
+        },
+        {
+          "text": "and",
+          "start": 0.935,
+          "end": 1.233
+        },
+        {
+          "text": "llama.cpp",
+          "start": 1.298,
+          "end": 1.666
+        },
+        {
+          "text": "work",
+          "start": 1.747,
+          "end": 2.056
+        },
+        {
+          "text": "predate",
+          "start": 2.124,
+          "end": 2.469
+        },
+        {
+          "text": "Build",
+          "start": 2.545,
+          "end": 2.866
+        },
+        {
+          "text": "Week.",
+          "start": 2.936,
+          "end": 3.678
+        },
+        {
+          "text": "The",
+          "start": 3.841,
+          "end": 4.138
+        },
+        {
+          "text": "public",
+          "start": 4.204,
+          "end": 4.537
+        },
+        {
+          "text": "Studio",
+          "start": 4.61,
+          "end": 4.943
+        },
+        {
+          "text": "built",
+          "start": 5.016,
+          "end": 5.337
+        },
+        {
+          "text": "this",
+          "start": 5.407,
+          "end": 5.717
+        },
+        {
+          "text": "week",
+          "start": 5.785,
+          "end": 6.094
+        },
+        {
+          "text": "adds",
+          "start": 6.162,
+          "end": 6.471
+        },
+        {
+          "text": "the",
+          "start": 6.539,
+          "end": 6.837
+        },
+        {
+          "text": "deterministic",
+          "start": 6.902,
+          "end": 7.317
+        },
+        {
+          "text": "engine,",
+          "start": 7.409,
+          "end": 7.926
+        },
+        {
+          "text": "fixture",
+          "start": 8.04,
+          "end": 8.385
+        },
+        {
+          "text": "lab,",
+          "start": 8.461,
+          "end": 8.943
+        },
+        {
+          "text": "imports,",
+          "start": 9.049,
+          "end": 9.579
+        },
+        {
+          "text": "safe",
+          "start": 9.695,
+          "end": 10.004
+        },
+        {
+          "text": "runner,",
+          "start": 10.072,
+          "end": 10.59
+        },
+        {
+          "text": "exports,",
+          "start": 10.704,
+          "end": 11.233
+        },
+        {
+          "text": "and",
+          "start": 11.35,
+          "end": 11.647
+        },
+        {
+          "text": "bounded",
+          "start": 11.713,
+          "end": 12.057
+        },
+        {
+          "text": "GPT-5.6",
+          "start": 12.133,
+          "end": 12.478
+        },
+        {
+          "text": "workflow.",
+          "start": 12.553,
+          "end": 13.342
+        },
+        {
+          "text": "It",
+          "start": 13.515,
+          "end": 13.801
+        },
+        {
+          "text": "works",
+          "start": 13.864,
+          "end": 14.185
+        },
+        {
+          "text": "offline,",
+          "start": 14.255,
+          "end": 14.785
+        },
+        {
+          "text": "with",
+          "start": 14.901,
+          "end": 15.211
+        },
+        {
+          "text": "no",
+          "start": 15.279,
+          "end": 15.564
+        },
+        {
+          "text": "GPU",
+          "start": 15.627,
+          "end": 15.925
+        },
+        {
+          "text": "or",
+          "start": 15.99,
+          "end": 16.276
+        },
+        {
+          "text": "model",
+          "start": 16.339,
+          "end": 16.66
+        },
+        {
+          "text": "required.",
+          "start": 16.73,
+          "end": 17.519
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    },
+    {
+      "frame": 8,
+      "path": "assets/voice/08.wav",
+      "duration_s": 9.579,
+      "words": [
+        {
+          "text": "Do",
+          "start": 0.08,
+          "end": 0.319
+        },
+        {
+          "text": "not",
+          "start": 0.371,
+          "end": 0.62
+        },
+        {
+          "text": "trust",
+          "start": 0.675,
+          "end": 0.943
+        },
+        {
+          "text": "the",
+          "start": 1.002,
+          "end": 1.25
+        },
+        {
+          "text": "fastest",
+          "start": 1.305,
+          "end": 1.593
+        },
+        {
+          "text": "number.",
+          "start": 1.656,
+          "end": 2.295
+        },
+        {
+          "text": "Reproduce",
+          "start": 2.436,
+          "end": 2.743
+        },
+        {
+          "text": "the",
+          "start": 2.811,
+          "end": 3.06
+        },
+        {
+          "text": "decision.",
+          "start": 3.114,
+          "end": 3.773
+        },
+        {
+          "text": "MoE",
+          "start": 3.918,
+          "end": 4.166
+        },
+        {
+          "text": "Autopilot",
+          "start": 4.221,
+          "end": 4.529
+        },
+        {
+          "text": "Studio",
+          "start": 4.596,
+          "end": 4.874
+        },
+        {
+          "text": "is",
+          "start": 4.935,
+          "end": 5.174
+        },
+        {
+          "text": "public",
+          "start": 5.227,
+          "end": 5.505
+        },
+        {
+          "text": "now",
+          "start": 5.566,
+          "end": 5.815
+        },
+        {
+          "text": "on",
+          "start": 5.869,
+          "end": 6.108
+        },
+        {
+          "text": "GitHub,",
+          "start": 6.16,
+          "end": 6.593
+        },
+        {
+          "text": "with",
+          "start": 6.688,
+          "end": 6.947
+        },
+        {
+          "text": "a",
+          "start": 7.003,
+          "end": 7.232
+        },
+        {
+          "text": "Windows",
+          "start": 7.283,
+          "end": 7.571
+        },
+        {
+          "text": "release",
+          "start": 7.634,
+          "end": 7.922
+        },
+        {
+          "text": "and",
+          "start": 7.985,
+          "end": 8.234
+        },
+        {
+          "text": "fixture",
+          "start": 8.288,
+          "end": 8.576
+        },
+        {
+          "text": "walkthrough.",
+          "start": 8.639,
+          "end": 9.328
+        }
+      ],
+      "word_timing_source": "estimated_from_locked_script"
+    }
+  ],
+  "sfx": []
+}

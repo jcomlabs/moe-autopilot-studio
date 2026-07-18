@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .evidence-window{position:absolute;left:120px;top:155px;width:1280px;height:800px;border:2px solid #102018;background:#ffffff;overflow:hidden}.evidence-window img{width:100%;height:100%;object-fit:cover;object-position:top}
+      .protocol-chips{position:absolute;right:105px;top:175px;width:350px;display:grid;gap:12px}.protocol-chips span{padding:18px 22px;border:2px solid #176b4b;background:#ffffff;color:#19422e;font-size:18px;letter-spacing:.1em}
+      .old-value{position:absolute;right:120px;top:505px;width:310px;padding:20px;border:2px solid #b83a32;background:#ffffff;color:#b83a32}.old-value b,.measured-value b{display:block;font-size:86px}.old-value span,.measured-value span{font:600 15px 'JetBrains Mono',monospace;letter-spacing:.09em}
+      .boundary{position:absolute;right:90px;top:490px;width:370px;height:2px;background:#b83a32;transform:rotate(-8deg)}
+      .measured-value{position:absolute;right:90px;bottom:175px;width:400px;padding:26px;background:#19422e;color:#ffffff}.measured-value b{color:#dff3e9;font-size:74px}
+
+</style>
+<div id="root" data-composition-id="04-protocol-guard" data-width="1920" data-height="1080" data-duration="15.701">
+      <div class="ground paper"></div><div class="topbar"><span>EVIDENCE REGISTRY / 04</span><span>PROTOCOL FINGERPRINT</span></div>
+      <div id="evidence-window" class="evidence-window"><img src="assets/studio-evidence.png" alt="Protocol-compatible evidence registry"></div>
+      <div id="protocol-chips" class="protocol-chips mono"><span>MODEL</span><span>BUILD</span><span>FLAGS</span><span>INSTRUMENT</span></div>
+      <div id="old-value" class="old-value serif"><b>2.3</b><span>OLDER / INCOMPATIBLE</span></div>
+      <div id="boundary" class="boundary"></div>
+      <div id="measured-value" class="measured-value serif"><b>19.2 : 1</b><span>MEASURED TOGETHER</span></div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#evidence-window",{opacity:0,y:60},{opacity:1,y:0,duration:1,ease:"power3.out"},.2)
+        .fromTo("#protocol-chips span",{opacity:0,x:80},{opacity:1,x:0,duration:.55,stagger:.45,ease:"power3.out"},3.2)
+        .fromTo("#old-value",{opacity:0,x:100},{opacity:1,x:0,duration:.7,ease:"power3.out"},8.1)
+        .fromTo("#boundary",{scaleX:0,transformOrigin:"left"},{scaleX:1,duration:.45,ease:"power3.out"},9.6)
+        .to("#old-value",{x:430,opacity:0,duration:.65,ease:"power3.in"},10.2)
+        .fromTo("#measured-value",{opacity:0,y:70},{opacity:1,y:0,duration:.9,ease:"power3.out"},12.0);tl.to({}, {duration:15.701}, 0);window.__timelines["04-protocol-guard"]=tl;</script>
+</template></body></html>

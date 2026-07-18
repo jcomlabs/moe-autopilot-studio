@@ -19,3 +19,12 @@ playwright-report/
 test-results/
 .ruff_cache/
 /pages/
+
+# Build Week video: keep the reproducible source, not local tool state or renders.
+videos/**/node_modules/
+videos/**/renders/
+videos/**/snapshots/
+videos/**/capture/
+videos/**/AGENTS.md
+videos/**/CLAUDE.md
+videos/**/.media/

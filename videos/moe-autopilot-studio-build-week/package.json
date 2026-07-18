@@ -1,0 +1,17 @@
+{
+  "name": "moe-autopilot-studio-build-week",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:video": "node scripts/build-video.mjs",
+    "captions:timings": "node scripts/estimate-word-timings.mjs",
+    "capture:studio": "node scripts/capture-studio.mjs",
+    "dev": "npx --yes hyperframes@0.7.64 preview",
+    "check": "npx --yes hyperframes@0.7.64 check",
+    "render": "npx --yes hyperframes@0.7.64 render",
+    "publish": "npx --yes hyperframes@0.7.64 publish"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1"
+  }
+}

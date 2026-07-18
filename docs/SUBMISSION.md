@@ -13,6 +13,8 @@ reproducible ENABLE, DISABLE, or MEASURE decision.
 
 **Windows release:** https://github.com/jcomlabs/moe-autopilot-studio/releases/latest
 
+**Demo video:** pending public YouTube upload by the entrant
+
 ## Problem
 
 Local MoE inference has a workload-dependent placement problem. Keeping hot
@@ -82,9 +84,9 @@ is not promoted over the public fixture after only two repetitions.
 
 ## Remaining submission actions
 
-- Record the public video using `docs/VIDEO_SCRIPT.md`; keep it below three
-  minutes and show the same live GPT-5.6 explanation as the app.
-- Add the final public video URL to the form and this document.
-- Verify the release SHA-256 and both public links from a signed-out browser.
-- Submit before the Devpost deadline; do not add post-deadline commits to the
-  submitted revision.
+- Upload `MoE-Autopilot-Studio-Build-Week-demo.mp4` as a public YouTube video
+  from the entrant's account and add its URL here and to Devpost.
+- Submit the `/feedback` session ID for the primary build task.
+- Complete and submit the authenticated Devpost form before 21 July 2026 at
+  17:00 Pacific Time; do not add post-deadline commits to the submitted
+  revision.

@@ -1,0 +1,222 @@
+<template id="captions-template" data-composition-id="captions" data-width="1920" data-height="1080">
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+
+<style data-brand-tokens>
+      :root {
+      --green: #20543A;
+      --green-deep: #19422E;
+      --green-lite: #276948;
+      --pink: #dff3e9;
+      --pink-deep: #176b4b;
+      --cream: #ffffff;
+      --cream-2: #C2E8D5;
+      --ink: #102018;
+      --cap-ink: #102018;
+      --cap-canvas: #ffffff;
+      --cap-accent: #176b4b;
+      --cap-accent-2: #276948;
+      --font-display: "Georgia", system-ui, serif;
+      --font-body: "Georgia", system-ui, sans-serif;
+      --cap-band-top: 900px;
+      --cap-band-height: 180px;
+      }
+    </style>
+
+<style>
+  #captions-root {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .caption-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+  /* the keep-out band, from captionBand(H) — frame content stays above it */
+  .caption-stage {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--cap-band-top, 900px);
+    height: var(--cap-band-height, 180px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .caption-group {
+    /* every group is absolutely stacked over the SAME band — exactly one shown at a
+       time via opacity. Must be absolute: in-flow groups would lay out side-by-side. */
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+  }
+
+  /* THE oat-cream card — single 2px green hairline border (the system's only
+     separator), 6px card radius, NO shadow (flat, paper-based) */
+  .caption-pill {
+    max-width: 78%;
+    padding: 20px 44px 24px;
+    background: var(--cap-canvas, #efe7d4);
+    border: 2px solid var(--cap-accent, #d27e96);
+    border-radius: 6px;
+  }
+  .caption-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.1em 0.34em;
+    font-family: "Georgia", Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(40px, 4.4vw, 58px);
+    line-height: 1.16;
+    letter-spacing: -0.02em;
+  }
+
+  /* upcoming — faint warm ink, no panel */
+  .caption-word {
+    display: inline-block;
+    padding: 0 0.06em;
+      color: color-mix(in srgb, var(--cap-ink, #1a1a17) 62%, var(--cap-canvas, #efe7d4));
+  }
+  /* current word — a quiet dusty-rose panel (box-shadow spread = a soft 6px block w/o
+     layout shift; no blur — editorial restraint, not a loud block), warm ink on top */
+  .caption-word.is-active {
+    color: var(--cap-canvas, #ffffff);
+    background: var(--cap-accent, #d27e96);
+    box-shadow: 0 0 0 0.05em var(--cap-accent, #d27e96);
+    border-radius: 6px;
+  }
+  /* already spoken — solid warm ink, panel cleared */
+  .caption-word.is-spoken {
+    color: var(--cap-ink, #1a1a17);
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* optional per-word accents (dormant until a word-classer tags them) */
+  /* brand / key term — heavier serif weight, editorial-forest's only display inflection */
+  .caption-word.cap-brand {
+    font-weight: 600;
+  }
+  /* numerals / data — the mono chrome voice, slightly recessed */
+  .caption-word.cap-num {
+    font-family: "Georgia", ui-monospace, monospace;
+    color: color-mix(in srgb, var(--cap-ink, #1a1a17) 72%, var(--cap-canvas, #efe7d4));
+  }
+  .caption-word.cap-num.is-active {
+    color: var(--cap-canvas, #ffffff);
+  }
+  /* emphasis — a 2px green hairline underline (the system's only separator, never heavy) */
+  .caption-word.cap-cta {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--cap-accent-2, #e89cb1);
+    text-underline-offset: 0.1em;
+  }
+
+  @media (max-aspect-ratio: 9/16) {
+    .caption-pill {
+      max-width: 92%;
+    }
+    .caption-line {
+      font-size: clamp(34px, 5.4vw, 48px);
+    }
+  }
+</style>
+
+<div
+  id="captions-root"
+  data-composition-id="captions"
+  data-timeline-locked
+  data-start="0"
+  data-duration="108.951"
+  data-fps="30"
+  data-width="1920"
+  data-height="1080"
+>
+  <div class="caption-layer" aria-hidden="true">
+    <div id="caption-stage" class="caption-stage"></div>
+  </div>
+</div>
+
+<script>
+  // captions.mjs injects the engine's scene-aware groups + real duration here.
+  var GROUPS = [{"id":"caption-group-0","frame":1,"start":0.08,"end":0.652,"text":"Faster decode","words":[{"id":"caption-word-0-0","text":"Faster","start":0.08,"end":0.314},{"id":"caption-word-0-1","text":"decode","start":0.366,"end":0.6}]},{"id":"caption-group-1","frame":1,"start":0.652,"end":1.173,"text":"can make","words":[{"id":"caption-word-1-0","text":"can","start":0.652,"end":0.861},{"id":"caption-word-1-1","text":"make","start":0.907,"end":1.125}]},{"id":"caption-group-2","frame":1,"start":1.173,"end":1.704,"text":"the whole","words":[{"id":"caption-word-2-0","text":"the","start":1.173,"end":1.383},{"id":"caption-word-2-1","text":"whole","start":1.429,"end":1.655}]},{"id":"caption-group-3","frame":1,"start":1.704,"end":2.667,"text":"workload slower.","words":[{"id":"caption-word-3-0","text":"workload","start":1.704,"end":1.955},{"id":"caption-word-3-1","text":"slower.","start":2.01,"end":2.549}]},{"id":"caption-group-4","frame":1,"start":2.667,"end":3.219,"text":"The setting","words":[{"id":"caption-word-4-0","text":"The","start":2.667,"end":2.877},{"id":"caption-word-4-1","text":"setting","start":2.923,"end":3.166}]},{"id":"caption-group-5","frame":1,"start":3.219,"end":3.72,"text":"is not","words":[{"id":"caption-word-5-0","text":"is","start":3.219,"end":3.42},{"id":"caption-word-5-1","text":"not","start":3.464,"end":3.674}]},{"id":"caption-group-6","frame":1,"start":3.72,"end":4.651,"text":"the decision.","words":[{"id":"caption-word-6-0","text":"the","start":3.72,"end":3.93},{"id":"caption-word-6-1","text":"decision.","start":3.976,"end":4.531}]},{"id":"caption-group-7","frame":1,"start":4.653,"end":5.84,"text":"The workload is.","words":[{"id":"caption-word-7-0","text":"The","start":4.653,"end":4.862},{"id":"caption-word-7-1","text":"workload","start":4.908,"end":5.159},{"id":"caption-word-7-2","text":"is.","start":5.214,"end":5.72}]},{"id":"caption-group-8","frame":2,"start":6.011,"end":7.318,"text":"MoE Autopilot Studio","words":[{"id":"caption-word-8-0","text":"MoE","start":6.011,"end":6.33},{"id":"caption-word-8-1","text":"Autopilot","start":6.4,"end":6.795},{"id":"caption-word-8-2","text":"Studio","start":6.882,"end":7.239}]},{"id":"caption-group-9","frame":2,"start":7.318,"end":8.763,"text":"turns measured local-inference","words":[{"id":"caption-word-9-0","text":"turns","start":7.318,"end":7.662},{"id":"caption-word-9-1","text":"measured","start":7.738,"end":8.12},{"id":"caption-word-9-2","text":"local-inference","start":8.204,"end":8.663}]},{"id":"caption-group-10","frame":2,"start":8.763,"end":9.993,"text":"evidence into a","words":[{"id":"caption-word-10-0","text":"evidence","start":8.763,"end":9.146},{"id":"caption-word-10-1","text":"into","start":9.229,"end":9.561},{"id":"caption-word-10-2","text":"a","start":9.634,"end":9.928}]},{"id":"caption-group-11","frame":2,"start":9.993,"end":11.474,"text":"reproducible verdict.","words":[{"id":"caption-word-11-0","text":"reproducible","start":9.993,"end":10.426},{"id":"caption-word-11-1","text":"verdict.","start":10.521,"end":11.354}]},{"id":"caption-group-12","frame":2,"start":11.537,"end":12.767,"text":"At five hundred","words":[{"id":"caption-word-12-0","text":"At","start":11.537,"end":11.844},{"id":"caption-word-12-1","text":"five","start":11.911,"end":12.243},{"id":"caption-word-12-2","text":"hundred","start":12.316,"end":12.686}]},{"id":"caption-group-13","frame":2,"start":12.767,"end":14.027,"text":"prompt tokens and","words":[{"id":"caption-word-13-0","text":"prompt","start":12.767,"end":13.124},{"id":"caption-word-13-1","text":"tokens","start":13.202,"end":13.56},{"id":"caption-word-13-2","text":"and","start":13.638,"end":13.957}]},{"id":"caption-group-14","frame":2,"start":14.027,"end":15.334,"text":"three hundred output","words":[{"id":"caption-word-14-0","text":"three","start":14.027,"end":14.372},{"id":"caption-word-14-1","text":"hundred","start":14.448,"end":14.817},{"id":"caption-word-14-2","text":"output","start":14.899,"end":15.256}]},{"id":"caption-group-15","frame":2,"start":15.334,"end":16.01,"text":"tokens,","words":[{"id":"caption-word-15-0","text":"tokens,","start":15.334,"end":15.89}]},{"id":"caption-group-16","frame":2,"start":16.012,"end":17.303,"text":"this split improves","words":[{"id":"caption-word-16-0","text":"this","start":16.012,"end":16.344},{"id":"caption-word-16-1","text":"split","start":16.417,"end":16.761},{"id":"caption-word-16-2","text":"improves","start":16.837,"end":17.219}]},{"id":"caption-group-17","frame":2,"start":17.303,"end":18.548,"text":"total latency by","words":[{"id":"caption-word-17-0","text":"total","start":17.303,"end":17.648},{"id":"caption-word-17-1","text":"latency","start":17.723,"end":18.093},{"id":"caption-word-17-2","text":"by","start":18.174,"end":18.481}]},{"id":"caption-group-18","frame":2,"start":18.548,"end":19.891,"text":"4.4 percent.","words":[{"id":"caption-word-18-0","text":"4.4","start":18.548,"end":18.868},{"id":"caption-word-18-1","text":"percent.","start":18.938,"end":19.771}]},{"id":"caption-group-19","frame":3,"start":20.134,"end":21.253,"text":"Change only the","words":[{"id":"caption-word-19-0","text":"Change","start":20.134,"end":20.459},{"id":"caption-word-19-1","text":"only","start":20.53,"end":20.832},{"id":"caption-word-19-2","text":"the","start":20.899,"end":21.189}]},{"id":"caption-group-20","frame":3,"start":21.253,"end":22.4,"text":"prompt to sixteen","words":[{"id":"caption-word-20-0","text":"prompt","start":21.253,"end":21.578},{"id":"caption-word-20-1","text":"to","start":21.649,"end":21.928},{"id":"caption-word-20-2","text":"sixteen","start":21.989,"end":22.326}]},{"id":"caption-group-21","frame":3,"start":22.4,"end":23.691,"text":"thousand tokens.","words":[{"id":"caption-word-21-0","text":"thousand","start":22.4,"end":22.748},{"id":"caption-word-21-1","text":"tokens.","start":22.824,"end":23.571}]},{"id":"caption-group-22","frame":3,"start":23.735,"end":24.881,"text":"Coverage stays at","words":[{"id":"caption-word-22-0","text":"Coverage","start":23.735,"end":24.083},{"id":"caption-word-22-1","text":"stays","start":24.159,"end":24.472},{"id":"caption-word-22-2","text":"at","start":24.541,"end":24.82}]},{"id":"caption-group-23","frame":3,"start":24.881,"end":26.128,"text":"68.6 percent.","words":[{"id":"caption-word-23-0","text":"68.6","start":24.881,"end":25.183},{"id":"caption-word-23-1","text":"percent.","start":25.25,"end":26.008}]},{"id":"caption-group-24","frame":3,"start":26.174,"end":27.843,"text":"Decode still improves.","words":[{"id":"caption-word-24-0","text":"Decode","start":26.174,"end":26.499},{"id":"caption-word-24-1","text":"still","start":26.571,"end":26.884},{"id":"caption-word-24-2","text":"improves.","start":26.953,"end":27.723}]},{"id":"caption-group-25","frame":3,"start":27.892,"end":29.01,"text":"But prefill now","words":[{"id":"caption-word-25-0","text":"But","start":27.892,"end":28.182},{"id":"caption-word-25-1","text":"prefill","start":28.246,"end":28.582},{"id":"caption-word-25-2","text":"now","start":28.656,"end":28.947}]},{"id":"caption-group-26","frame":3,"start":29.01,"end":29.669,"text":"dominates,","words":[{"id":"caption-word-26-0","text":"dominates,","start":29.01,"end":29.55}]},{"id":"caption-group-27","frame":3,"start":29.669,"end":30.732,"text":"so the same","words":[{"id":"caption-word-27-0","text":"so","start":29.669,"end":29.948},{"id":"caption-word-27-1","text":"the","start":30.009,"end":30.3},{"id":"caption-word-27-2","text":"same","start":30.363,"end":30.665}]},{"id":"caption-group-28","frame":3,"start":30.732,"end":31.935,"text":"split regresses total","words":[{"id":"caption-word-28-0","text":"split","start":30.732,"end":31.045},{"id":"caption-word-28-1","text":"regresses","start":31.114,"end":31.473},{"id":"caption-word-28-2","text":"total","start":31.552,"end":31.866}]},{"id":"caption-group-29","frame":3,"start":31.935,"end":33.039,"text":"latency by 3.9","words":[{"id":"caption-word-29-0","text":"latency","start":31.935,"end":32.271},{"id":"caption-word-29-1","text":"by","start":32.345,"end":32.624},{"id":"caption-word-29-2","text":"3.9","start":32.685,"end":32.976}]},{"id":"caption-group-30","frame":3,"start":33.039,"end":33.918,"text":"percent.","words":[{"id":"caption-word-30-0","text":"percent.","start":33.039,"end":33.798}]},{"id":"caption-group-31","frame":3,"start":33.964,"end":35.195,"text":"Disable it.","words":[{"id":"caption-word-31-0","text":"Disable","start":33.964,"end":34.301},{"id":"caption-word-31-1","text":"it.","start":34.374,"end":35.075}]},{"id":"caption-group-32","frame":4,"start":35.409,"end":36.543,"text":"The guardrail is","words":[{"id":"caption-word-32-0","text":"The","start":35.409,"end":35.7},{"id":"caption-word-32-1","text":"guardrail","start":35.764,"end":36.124},{"id":"caption-word-32-2","text":"is","start":36.203,"end":36.482}]},{"id":"caption-group-33","frame":4,"start":36.543,"end":37.916,"text":"protocol compatibility.","words":[{"id":"caption-word-33-0","text":"protocol","start":36.543,"end":36.892},{"id":"caption-word-33-1","text":"compatibility.","start":36.968,"end":37.796}]},{"id":"caption-group-34","frame":4,"start":37.978,"end":39.112,"text":"The Studio joins","words":[{"id":"caption-word-34-0","text":"The","start":37.978,"end":38.269},{"id":"caption-word-34-1","text":"Studio","start":38.333,"end":38.658},{"id":"caption-word-34-2","text":"joins","start":38.73,"end":39.043}]},{"id":"caption-group-35","frame":4,"start":39.112,"end":40.275,"text":"prefill and decode","words":[{"id":"caption-word-35-0","text":"prefill","start":39.112,"end":39.449},{"id":"caption-word-35-1","text":"and","start":39.523,"end":39.814},{"id":"caption-word-35-2","text":"decode","start":39.878,"end":40.203}]},{"id":"caption-group-36","frame":4,"start":40.275,"end":41.615,"text":"only when model,","words":[{"id":"caption-word-36-0","text":"only","start":40.275,"end":40.577},{"id":"caption-word-36-1","text":"when","start":40.643,"end":40.946},{"id":"caption-word-36-2","text":"model,","start":41.012,"end":41.507}]},{"id":"caption-group-37","frame":4,"start":41.615,"end":42.219,"text":"build,","words":[{"id":"caption-word-37-0","text":"build,","start":41.615,"end":42.11}]},{"id":"caption-group-38","frame":4,"start":42.219,"end":42.822,"text":"flags,","words":[{"id":"caption-word-38-0","text":"flags,","start":42.219,"end":42.713}]},{"id":"caption-group-39","frame":4,"start":42.822,"end":44.486,"text":"and instrument match.","words":[{"id":"caption-word-39-0","text":"and","start":42.822,"end":43.113},{"id":"caption-word-39-1","text":"instrument","start":43.177,"end":43.548},{"id":"caption-word-39-2","text":"match.","start":43.629,"end":44.366}]},{"id":"caption-group-40","frame":4,"start":44.527,"end":45.704,"text":"An older break-even","words":[{"id":"caption-word-40-0","text":"An","start":44.527,"end":44.807},{"id":"caption-word-40-1","text":"older","start":44.868,"end":45.182},{"id":"caption-word-40-2","text":"break-even","start":45.251,"end":45.622}]},{"id":"caption-group-41","frame":4,"start":45.704,"end":46.768,"text":"near 2.3 is","words":[{"id":"caption-word-41-0","text":"near","start":45.704,"end":46.006},{"id":"caption-word-41-1","text":"2.3","start":46.072,"end":46.363},{"id":"caption-word-41-2","text":"is","start":46.427,"end":46.706}]},{"id":"caption-group-42","frame":4,"start":46.768,"end":48.355,"text":"not blended in.","words":[{"id":"caption-word-42-0","text":"not","start":46.768,"end":47.059},{"id":"caption-word-42-1","text":"blended","start":47.122,"end":47.459},{"id":"caption-word-42-2","text":"in.","start":47.533,"end":48.235}]},{"id":"caption-group-43","frame":4,"start":48.389,"end":49.593,"text":"The measured protocol","words":[{"id":"caption-word-43-0","text":"The","start":48.389,"end":48.68},{"id":"caption-word-43-1","text":"measured","start":48.744,"end":49.092},{"id":"caption-word-43-2","text":"protocol","start":49.168,"end":49.517}]},{"id":"caption-group-44","frame":4,"start":49.593,"end":50.891,"text":"recomputes 19.2.","words":[{"id":"caption-word-44-0","text":"recomputes","start":49.593,"end":49.965},{"id":"caption-word-44-1","text":"19.2.","start":50.046,"end":50.771}]},{"id":"caption-group-45","frame":5,"start":51.11,"end":52.312,"text":"GPT-5.6 does the","words":[{"id":"caption-word-45-0","text":"GPT-5.6","start":51.11,"end":51.467},{"id":"caption-word-45-1","text":"does","start":51.545,"end":51.866},{"id":"caption-word-45-2","text":"the","start":51.936,"end":52.244}]},{"id":"caption-group-46","frame":5,"start":52.312,"end":53.386,"text":"language work,","words":[{"id":"caption-word-46-0","text":"language","start":52.312,"end":52.681},{"id":"caption-word-46-1","text":"work,","start":52.762,"end":53.274}]},{"id":"caption-group-47","frame":5,"start":53.386,"end":55.099,"text":"not the arithmetic.","words":[{"id":"caption-word-47-0","text":"not","start":53.386,"end":53.694},{"id":"caption-word-47-1","text":"the","start":53.762,"end":54.07},{"id":"caption-word-47-2","text":"arithmetic.","start":54.138,"end":54.979}]},{"id":"caption-group-48","frame":5,"start":55.163,"end":56.38,"text":"Through Codex App","words":[{"id":"caption-word-48-0","text":"Through","start":55.163,"end":55.52},{"id":"caption-word-48-1","text":"Codex","start":55.599,"end":55.931},{"id":"caption-word-48-2","text":"App","start":56.004,"end":56.312}]},{"id":"caption-group-49","frame":5,"start":56.38,"end":57.611,"text":"Server and ChatGPT","words":[{"id":"caption-word-49-0","text":"Server","start":56.38,"end":56.725},{"id":"caption-word-49-1","text":"and","start":56.8,"end":57.108},{"id":"caption-word-49-2","text":"ChatGPT","start":57.176,"end":57.533}]},{"id":"caption-group-50","frame":5,"start":57.611,"end":58.25,"text":"OAuth,","words":[{"id":"caption-word-50-0","text":"OAuth,","start":57.611,"end":58.135}]},{"id":"caption-group-51","frame":5,"start":58.25,"end":59.437,"text":"it explains the","words":[{"id":"caption-word-51-0","text":"it","start":58.25,"end":58.546},{"id":"caption-word-51-1","text":"explains","start":58.611,"end":58.98},{"id":"caption-word-51-2","text":"the","start":59.062,"end":59.37}]},{"id":"caption-group-52","frame":5,"start":59.437,"end":60.713,"text":"structured report and","words":[{"id":"caption-word-52-0","text":"structured","start":59.437,"end":59.831},{"id":"caption-word-52-1","text":"report","start":59.917,"end":60.262},{"id":"caption-word-52-2","text":"and","start":60.338,"end":60.646}]},{"id":"caption-group-53","frame":5,"start":60.713,"end":62.049,"text":"proposes only experiments","words":[{"id":"caption-word-53-0","text":"proposes","start":60.713,"end":61.083},{"id":"caption-word-53-1","text":"only","start":61.164,"end":61.484},{"id":"caption-word-53-2","text":"experiments","start":61.554,"end":61.96}]},{"id":"caption-group-54","frame":5,"start":62.049,"end":63.28,"text":"the engine already","words":[{"id":"caption-word-54-0","text":"the","start":62.049,"end":62.357},{"id":"caption-word-54-1","text":"engine","start":62.425,"end":62.769},{"id":"caption-word-54-2","text":"already","start":62.845,"end":63.202}]},{"id":"caption-group-55","frame":5,"start":63.28,"end":64.217,"text":"produced.","words":[{"id":"caption-word-55-0","text":"produced.","start":63.28,"end":64.097}]},{"id":"caption-group-56","frame":5,"start":64.276,"end":65.508,"text":"The verdict cannot","words":[{"id":"caption-word-56-0","text":"The","start":64.276,"end":64.584},{"id":"caption-word-56-1","text":"verdict","start":64.652,"end":65.009},{"id":"caption-word-56-2","text":"cannot","start":65.087,"end":65.432}]},{"id":"caption-group-57","frame":5,"start":65.508,"end":66.842,"text":"be overwritten.","words":[{"id":"caption-word-57-0","text":"be","start":65.508,"end":65.804},{"id":"caption-word-57-1","text":"overwritten.","start":65.869,"end":66.722}]},{"id":"caption-group-58","frame":6,"start":67.089,"end":68.133,"text":"A decision can","words":[{"id":"caption-word-58-0","text":"A","start":67.089,"end":67.342},{"id":"caption-word-58-1","text":"decision","start":67.397,"end":67.726},{"id":"caption-word-58-2","text":"can","start":67.798,"end":68.072}]},{"id":"caption-group-59","frame":6,"start":68.133,"end":69.203,"text":"become a Windows","words":[{"id":"caption-word-59-0","text":"become","start":68.133,"end":68.44},{"id":"caption-word-59-1","text":"a","start":68.507,"end":68.76},{"id":"caption-word-59-2","text":"Windows","start":68.815,"end":69.133}]},{"id":"caption-group-60","frame":6,"start":69.203,"end":70.419,"text":"experiment without becoming","words":[{"id":"caption-word-60-0","text":"experiment","start":69.203,"end":69.553},{"id":"caption-word-60-1","text":"without","start":69.63,"end":69.948},{"id":"caption-word-60-2","text":"becoming","start":70.018,"end":70.347}]},{"id":"caption-group-61","frame":6,"start":70.419,"end":71.914,"text":"a shell string.","words":[{"id":"caption-word-61-0","text":"a","start":70.419,"end":70.671},{"id":"caption-word-61-1","text":"shell","start":70.727,"end":71.023},{"id":"caption-word-61-2","text":"string.","start":71.088,"end":71.794}]},{"id":"caption-group-62","frame":6,"start":71.948,"end":72.597,"text":"Executables,","words":[{"id":"caption-word-62-0","text":"Executables,","start":71.948,"end":72.48}]},{"id":"caption-group-63","frame":6,"start":72.597,"end":73.219,"text":"arguments,","words":[{"id":"caption-word-63-0","text":"arguments,","start":72.597,"end":73.107}]},{"id":"caption-group-64","frame":6,"start":73.219,"end":74.342,"text":"and environment stay","words":[{"id":"caption-word-64-0","text":"and","start":73.219,"end":73.493},{"id":"caption-word-64-1","text":"environment","start":73.554,"end":73.915},{"id":"caption-word-64-2","text":"stay","start":73.994,"end":74.28}]},{"id":"caption-group-65","frame":6,"start":74.342,"end":75.211,"text":"structured.","words":[{"id":"caption-word-65-0","text":"structured.","start":74.342,"end":75.091}]},{"id":"caption-group-66","frame":6,"start":75.255,"end":75.864,"text":"Timeouts,","words":[{"id":"caption-word-66-0","text":"Timeouts,","start":75.255,"end":75.755}]},{"id":"caption-group-67","frame":6,"start":75.864,"end":76.46,"text":"outputs,","words":[{"id":"caption-word-67-0","text":"outputs,","start":75.864,"end":76.353}]},{"id":"caption-group-68","frame":6,"start":76.46,"end":77.016,"text":"VRAM,","words":[{"id":"caption-word-68-0","text":"VRAM,","start":76.46,"end":76.916}]},{"id":"caption-group-69","frame":6,"start":77.016,"end":77.678,"text":"cancellation,","words":[{"id":"caption-word-69-0","text":"cancellation,","start":77.016,"end":77.558}]},{"id":"caption-group-70","frame":6,"start":77.678,"end":78.814,"text":"and process ownership","words":[{"id":"caption-word-70-0","text":"and","start":77.678,"end":77.952},{"id":"caption-word-70-1","text":"process","start":78.012,"end":78.33},{"id":"caption-word-70-2","text":"ownership","start":78.4,"end":78.739}]},{"id":"caption-group-71","frame":6,"start":78.814,"end":79.884,"text":"are captured for","words":[{"id":"caption-word-71-0","text":"are","start":78.814,"end":79.088},{"id":"caption-word-71-1","text":"captured","start":79.149,"end":79.477},{"id":"caption-word-71-2","text":"for","start":79.549,"end":79.824}]},{"id":"caption-group-72","frame":6,"start":79.884,"end":81.436,"text":"the next comparison.","words":[{"id":"caption-word-72-0","text":"the","start":79.884,"end":80.159},{"id":"caption-word-72-1","text":"next","start":80.219,"end":80.504},{"id":"caption-word-72-2","text":"comparison.","start":80.567,"end":81.316}]},{"id":"caption-group-73","frame":7,"start":81.66,"end":82.878,"text":"The measurements and","words":[{"id":"caption-word-73-0","text":"The","start":81.66,"end":81.958},{"id":"caption-word-73-1","text":"measurements","start":82.023,"end":82.426},{"id":"caption-word-73-2","text":"and","start":82.515,"end":82.813}]},{"id":"caption-group-74","frame":7,"start":82.878,"end":84.125,"text":"llama.cpp work predate","words":[{"id":"caption-word-74-0","text":"llama.cpp","start":82.878,"end":83.246},{"id":"caption-word-74-1","text":"work","start":83.327,"end":83.636},{"id":"caption-word-74-2","text":"predate","start":83.704,"end":84.049}]},{"id":"caption-group-75","frame":7,"start":84.125,"end":85.378,"text":"Build Week.","words":[{"id":"caption-word-75-0","text":"Build","start":84.125,"end":84.446},{"id":"caption-word-75-1","text":"Week.","start":84.516,"end":85.258}]},{"id":"caption-group-76","frame":7,"start":85.421,"end":86.596,"text":"The public Studio","words":[{"id":"caption-word-76-0","text":"The","start":85.421,"end":85.718},{"id":"caption-word-76-1","text":"public","start":85.784,"end":86.117},{"id":"caption-word-76-2","text":"Studio","start":86.19,"end":86.523}]},{"id":"caption-group-77","frame":7,"start":86.596,"end":87.742,"text":"built this week","words":[{"id":"caption-word-77-0","text":"built","start":86.596,"end":86.917},{"id":"caption-word-77-1","text":"this","start":86.987,"end":87.297},{"id":"caption-word-77-2","text":"week","start":87.365,"end":87.674}]},{"id":"caption-group-78","frame":7,"start":87.742,"end":88.989,"text":"adds the deterministic","words":[{"id":"caption-word-78-0","text":"adds","start":87.742,"end":88.051},{"id":"caption-word-78-1","text":"the","start":88.119,"end":88.417},{"id":"caption-word-78-2","text":"deterministic","start":88.482,"end":88.897}]},{"id":"caption-group-79","frame":7,"start":88.989,"end":89.62,"text":"engine,","words":[{"id":"caption-word-79-0","text":"engine,","start":88.989,"end":89.506}]},{"id":"caption-group-80","frame":7,"start":89.62,"end":90.629,"text":"fixture lab,","words":[{"id":"caption-word-80-0","text":"fixture","start":89.62,"end":89.965},{"id":"caption-word-80-1","text":"lab,","start":90.041,"end":90.523}]},{"id":"caption-group-81","frame":7,"start":90.629,"end":91.275,"text":"imports,","words":[{"id":"caption-word-81-0","text":"imports,","start":90.629,"end":91.159}]},{"id":"caption-group-82","frame":7,"start":91.275,"end":92.284,"text":"safe runner,","words":[{"id":"caption-word-82-0","text":"safe","start":91.275,"end":91.584},{"id":"caption-word-82-1","text":"runner,","start":91.652,"end":92.17}]},{"id":"caption-group-83","frame":7,"start":92.284,"end":92.93,"text":"exports,","words":[{"id":"caption-word-83-0","text":"exports,","start":92.284,"end":92.813}]},{"id":"caption-group-84","frame":7,"start":92.93,"end":94.133,"text":"and bounded GPT-5.6","words":[{"id":"caption-word-84-0","text":"and","start":92.93,"end":93.227},{"id":"caption-word-84-1","text":"bounded","start":93.293,"end":93.637},{"id":"caption-word-84-2","text":"GPT-5.6","start":93.713,"end":94.058}]},{"id":"caption-group-85","frame":7,"start":94.133,"end":95.042,"text":"workflow.","words":[{"id":"caption-word-85-0","text":"workflow.","start":94.133,"end":94.922}]},{"id":"caption-group-86","frame":7,"start":95.095,"end":96.481,"text":"It works offline,","words":[{"id":"caption-word-86-0","text":"It","start":95.095,"end":95.381},{"id":"caption-word-86-1","text":"works","start":95.444,"end":95.765},{"id":"caption-word-86-2","text":"offline,","start":95.835,"end":96.365}]},{"id":"caption-group-87","frame":7,"start":96.481,"end":97.57,"text":"with no GPU","words":[{"id":"caption-word-87-0","text":"with","start":96.481,"end":96.791},{"id":"caption-word-87-1","text":"no","start":96.859,"end":97.144},{"id":"caption-word-87-2","text":"GPU","start":97.207,"end":97.505}]},{"id":"caption-group-88","frame":7,"start":97.57,"end":99.219,"text":"or model required.","words":[{"id":"caption-word-88-0","text":"or","start":97.57,"end":97.856},{"id":"caption-word-88-1","text":"model","start":97.919,"end":98.24},{"id":"caption-word-88-2","text":"required.","start":98.31,"end":99.099}]},{"id":"caption-group-89","frame":8,"start":99.452,"end":100.047,"text":"Do not","words":[{"id":"caption-word-89-0","text":"Do","start":99.452,"end":99.691},{"id":"caption-word-89-1","text":"not","start":99.743,"end":99.992}]},{"id":"caption-group-90","frame":8,"start":100.047,"end":100.677,"text":"trust the","words":[{"id":"caption-word-90-0","text":"trust","start":100.047,"end":100.315},{"id":"caption-word-90-1","text":"the","start":100.374,"end":100.622}]},{"id":"caption-group-91","frame":8,"start":100.677,"end":101.787,"text":"fastest number.","words":[{"id":"caption-word-91-0","text":"fastest","start":100.677,"end":100.965},{"id":"caption-word-91-1","text":"number.","start":101.028,"end":101.667}]},{"id":"caption-group-92","frame":8,"start":101.808,"end":103.265,"text":"Reproduce the decision.","words":[{"id":"caption-word-92-0","text":"Reproduce","start":101.808,"end":102.115},{"id":"caption-word-92-1","text":"the","start":102.183,"end":102.432},{"id":"caption-word-92-2","text":"decision.","start":102.486,"end":103.145}]},{"id":"caption-group-93","frame":8,"start":103.29,"end":104.307,"text":"MoE Autopilot Studio","words":[{"id":"caption-word-93-0","text":"MoE","start":103.29,"end":103.538},{"id":"caption-word-93-1","text":"Autopilot","start":103.593,"end":103.901},{"id":"caption-word-93-2","text":"Studio","start":103.968,"end":104.246}]},{"id":"caption-group-94","frame":8,"start":104.307,"end":104.938,"text":"is public","words":[{"id":"caption-word-94-0","text":"is","start":104.307,"end":104.546},{"id":"caption-word-94-1","text":"public","start":104.599,"end":104.877}]},{"id":"caption-group-95","frame":8,"start":104.938,"end":106.06,"text":"now on GitHub,","words":[{"id":"caption-word-95-0","text":"now","start":104.938,"end":105.187},{"id":"caption-word-95-1","text":"on","start":105.241,"end":105.48},{"id":"caption-word-95-2","text":"GitHub,","start":105.532,"end":105.965}]},{"id":"caption-group-96","frame":8,"start":106.06,"end":106.655,"text":"with a","words":[{"id":"caption-word-96-0","text":"with","start":106.06,"end":106.319},{"id":"caption-word-96-1","text":"a","start":106.375,"end":106.604}]},{"id":"caption-group-97","frame":8,"start":106.655,"end":107.66,"text":"Windows release and","words":[{"id":"caption-word-97-0","text":"Windows","start":106.655,"end":106.943},{"id":"caption-word-97-1","text":"release","start":107.006,"end":107.294},{"id":"caption-word-97-2","text":"and","start":107.357,"end":107.606}]},{"id":"caption-group-98","frame":8,"start":107.66,"end":108.82,"text":"fixture walkthrough.","words":[{"id":"caption-word-98-0","text":"fixture","start":107.66,"end":107.948},{"id":"caption-word-98-1","text":"walkthrough.","start":108.011,"end":108.7}]}];
+  var DURATION = 108.951;
+
+  (function () {
+    var stage = document.getElementById("caption-stage");
+
+    // build DOM: one .caption-group per group, .caption-word per word
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.createElement("div");
+      groupEl.className = "caption-group";
+      groupEl.id = "caption-group-" + g;
+      var pill = document.createElement("div");
+      pill.className = "caption-pill";
+      var line = document.createElement("div");
+      line.className = "caption-line";
+      (group.words || []).forEach(function (w, i) {
+        var span = document.createElement("span");
+        span.className = "caption-word";
+        span.id = "caption-word-" + g + "-" + i;
+        span.textContent = String(w.text);
+        line.appendChild(span);
+      });
+      pill.appendChild(line);
+      groupEl.appendChild(pill);
+      stage.appendChild(groupEl);
+    });
+
+    window.__timelines = window.__timelines || {};
+    var tl = gsap.timeline({ paused: true });
+
+    GROUPS.forEach(function (group, g) {
+      var groupEl = document.getElementById("caption-group-" + g);
+      var words = group.words || [];
+      var next = GROUPS[g + 1];
+      var isLast = g === GROUPS.length - 1;
+      var start = Math.max(0, Number(group.start));
+      var end = isLast ? DURATION : Math.min(Number(next.start), Number(group.end) + 0.3);
+      if (end <= start) end = start + 0.01;
+
+      // group on/off — exactly one group visible at a time
+      tl.set(groupEl, { opacity: 1 }, start);
+      tl.set(groupEl, { opacity: 0 }, end);
+
+      // 3-state karaoke via className SETS — seek-safe (gsap.set applies on the
+      // engine's frame-by-frame seek; .call callbacks would NOT fire).
+      words.forEach(function (w, i) {
+        var el = document.getElementById("caption-word-" + g + "-" + i);
+        var at = Math.max(start, Number(w.start));
+        tl.set(el, { className: "caption-word" }, start); // upcoming (also resets on reverse-seek)
+        tl.set(el, { className: "caption-word is-active" }, at); // current
+        tl.fromTo(el, { scale: 0.985 }, { scale: 1, duration: 0.18, ease: "power1.out" }, at);
+        if (i + 1 < words.length) {
+          var nextAt = Math.max(start, Number(words[i + 1].start));
+          tl.set(el, { className: "caption-word is-spoken" }, nextAt); // demote when next activates
+        }
+      });
+      if (words.length) {
+        var lastEl = document.getElementById("caption-word-" + g + "-" + (words.length - 1));
+        var lastSpoken = Math.min(end, Number(words[words.length - 1].end) + 0.1);
+        tl.set(lastEl, { className: "caption-word is-spoken" }, lastSpoken);
+      }
+    });
+
+    // full-span anchor so the sub-comp timeline spans the whole video
+    tl.to({}, { duration: DURATION }, 0);
+    window.__timelines["captions"] = tl;
+  })();
+</script>
+
+<style>
+  .caption-line { line-height: 1.1 !important; }
+</style>
+</template>

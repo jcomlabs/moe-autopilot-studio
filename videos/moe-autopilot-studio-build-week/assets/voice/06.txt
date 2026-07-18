@@ -1,0 +1,1 @@
+A decision can become a Windows experiment without becoming a shell string. Executables, arguments, and environment stay structured. Timeouts, outputs, VRAM, cancellation, and process ownership are captured for the next comparison.

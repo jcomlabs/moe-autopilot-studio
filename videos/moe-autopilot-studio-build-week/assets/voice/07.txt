@@ -1,0 +1,1 @@
+The measurements and llama.cpp work predate Build Week. The public Studio built this week adds the deterministic engine, fixture lab, imports, safe runner, exports, and bounded GPT-5.6 workflow. It works offline, with no GPU or model required.

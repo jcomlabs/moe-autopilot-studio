@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"></head><body><template>
+<style>
+  *{box-sizing:border-box}#root{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;container-type:size;color:#102018;font-family:Georgia,serif}.clip,.ground{position:absolute;inset:0}.ground.paper{background:#eef3ef}.ground.dark{background:#19422e}.serif{font-family:Georgia,serif}.mono{font-family:'JetBrains Mono',Consolas,monospace}.topbar{position:absolute;left:80px;right:80px;top:48px;display:flex;justify-content:space-between;padding-bottom:18px;border-bottom:2px solid #176b4b;font:600 18px 'JetBrains Mono',Consolas,monospace;letter-spacing:.13em;color:#19422e;z-index:50}.topbar.light{color:#dff3e9;border-color:#dff3e9}
+
+      .advisor-window{position:absolute;left:120px;top:145px;width:1440px;height:900px;border:2px solid #102018;background:#ffffff;overflow:hidden}.advisor-window img{width:100%;height:100%;object-fit:cover}
+      .role-stack{position:absolute;right:78px;top:220px;width:355px;display:grid;gap:10px}.role-stack span{padding:18px;background:#19422e;color:#ffffff;font-size:17px;letter-spacing:.08em}.role-stack b{color:#dff3e9;margin-right:12px}
+      .cursor{position:absolute;right:190px;bottom:160px;font-size:54px;color:#2868d7;text-shadow:0 2px 0 #fff}.ripple{position:absolute;right:205px;bottom:178px;width:80px;height:80px;border:4px solid #2868d7;border-radius:50%}
+      .advisor-lock{position:absolute;left:420px;bottom:165px;padding:16px 24px;background:#19422e;color:#dff3e9;font-size:17px;letter-spacing:.09em}
+
+</style>
+<div id="root" data-composition-id="05-bounded-advisor" data-width="1920" data-height="1080" data-duration="15.979">
+      <div class="ground paper"></div><div class="topbar"><span>BOUNDED ADVISOR / 05</span><span>GPT-5.6 + APP SERVER</span></div>
+      <div id="advisor-window" class="advisor-window"><img src="assets/studio-advisor.png" alt="Live GPT-5.6 explanation"></div>
+      <div id="roles" class="role-stack mono"><span><b>ENGINE</b> CALCULATE</span><span><b>GPT-5.6</b> EXPLAIN</span><span><b>USER</b> CONFIRM</span></div>
+      <div id="cursor" class="cursor">↖</div><div id="ripple" class="ripple"></div>
+      <div id="advisor-lock" class="advisor-lock mono">VERDICT LOCKED / INVALID EXPERIMENT IDS REJECTED</div></div>
+<script>window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+      tl.fromTo("#advisor-window",{opacity:0,y:55},{opacity:1,y:0,duration:1,ease:"power3.out"},.2)
+        .fromTo("#cursor",{opacity:0,x:180,y:120},{opacity:1,x:0,y:0,duration:1.2,ease:"power3.out"},2.4)
+        .fromTo("#ripple",{opacity:0,scale:.2},{opacity:1,scale:1,duration:.35,ease:"power2.out"},3.45).to("#ripple",{opacity:0,scale:1.8,duration:.5,ease:"power2.out",overwrite:"auto"},3.82)
+        .fromTo("#roles span",{opacity:0,x:80},{opacity:1,x:0,duration:.55,stagger:.7,ease:"power3.out"},4.4)
+        .fromTo("#advisor-lock",{opacity:0,scaleX:.4,transformOrigin:"center"},{opacity:1,scaleX:1,duration:.8,ease:"power3.out"},12.2);tl.to({}, {duration:15.979}, 0);window.__timelines["05-bounded-advisor"]=tl;</script>
+</template></body></html>
