@@ -1,4 +1,4 @@
-MoE Autopilot Studio is a new OpenAI Build Week 2026 product.
+MoE Autopilot Studio
 
 Pre-existing research and source provenance:
 
@@ -9,10 +9,10 @@ Pre-existing research and source provenance:
 - ggml-org/llama.cpp, licensed under the MIT License
 
 The deterministic coverage convention, measured calibration points, and
-hot-list file format predate Build Week. The Studio UI, typed analysis engine,
-protocol-aware evidence model, safe experiment runner, Codex App Server bridge,
-offline judge mode, exports, tests, and distribution were created during Build
-Week. Sanitized fixture manifests retain hashes of their local source artifacts.
+hot-list file format originate in the pre-existing moe-autopilot research. The
+Studio UI, typed analysis engine, protocol-aware evidence model, safe experiment
+runner, Codex App Server bridge, offline mode, exports, tests, and distribution
+are implemented in this repository. Sanitized fixture manifests retain hashes
+of their local source artifacts.
 
 No DeltaMoE clinical hardsets or domain-training data are distributed here.
-

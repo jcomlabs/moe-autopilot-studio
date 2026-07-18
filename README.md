@@ -11,9 +11,10 @@ commands, or the selected experiment.
 
 ![MoE Autopilot Studio deterministic workload analysis](docs/assets/studio-desktop.png)
 
-## Two-minute judge path
+## Quickstart
 
-1. Download and extract the latest Windows x64 ZIP from Releases.
+1. Download and extract the latest Windows x64 ZIP from
+   [Releases](https://github.com/JigSawPT/moe-autopilot-studio/releases/latest).
 2. Run `MoEAutopilotStudio.exe`. No Python, GPU, model, or Codex is required.
 3. Open `Coder-Next: prefill versus decode` and select `Total latency`.
 4. Compare the default chat workload with a prompt-heavy workload such as
@@ -73,16 +74,20 @@ protocol gate.
 These are measurements from one Windows workstation, not universal speed
 claims. Recalibrate before applying them to another model, build, or machine.
 
-## Product boundary
+## Maturity and limits
 
-This repository was created for OpenAI Build Week 2026. It does not implement a
-new cache algorithm, dynamic cache, V3, training, or DeltaMoE. The earlier
-research repository remains frozen at
+Studio is experimental `v0.1` research tooling, not an automatic production
+optimizer. It does not implement a new cache algorithm, dynamic caching, V3,
+training, or DeltaMoE. Its bundled measurements come from one Windows
+workstation and must not be generalized to a different model, build, or machine
+without recalibration. Local runs require the compatible llama.cpp fork and do
+not alter model files.
+
+The earlier research repository remains frozen at
 `JigSawPT/moe-autopilot@e1170152ed074a062c235ee685af08fd3dde6dec`.
-
-See [BUILD_WEEK.md](BUILD_WEEK.md), [NOTICE](NOTICE), and
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the exact boundary and
-provenance.
+See [NOTICE](NOTICE) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the
+technical boundary and immutable provenance. Event-specific material is kept on
+the `submission/openai-build-week` branch so the general product remains clean.
 
 ## Development
 

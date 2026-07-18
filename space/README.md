@@ -11,6 +11,6 @@ license: mit
 
 # MoE Autopilot Studio
 
-Public fixture-only Build Week demo. All verdicts and metrics are computed by
+Public fixture-only demo. All verdicts and metrics are computed by
 the deterministic engine. ChatGPT OAuth and local experiment execution are
 available only in the Windows release.
