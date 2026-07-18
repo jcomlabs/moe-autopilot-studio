@@ -24,3 +24,8 @@ def test_profile_requires_integer_counts() -> None:
     with pytest.raises(ValueError, match="invalid counts"):
         parse_import(ImportRequest(kind="profile", content='{"layers":{"0":{"counts":[1,-1]}}}', filename="bad.json"))
 
+
+def test_byte_limit_applies_to_hotlists(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("moe_autopilot_studio.parsers.MAX_IMPORT_BYTES", 4)
+    with pytest.raises(ValueError, match="exceeds"):
+        parse_import(ImportRequest(kind="hotlist", content="0 1 2", filename="large.hotlist"))

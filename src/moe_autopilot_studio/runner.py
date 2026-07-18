@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import asyncio
-import os
 import shutil
 import subprocess
 import uuid
@@ -10,6 +9,7 @@ from pathlib import Path
 
 from .models import RunRecord, RunSpec
 from .storage import StudioStore
+from .security import redact_secrets, sanitized_child_env
 
 
 ALLOWED_EXECUTABLES = {
@@ -23,6 +23,16 @@ ALLOWED_EXECUTABLES = {
 TAIL_LIMIT = 20_000
 
 
+def _argument_value(argv: list[str], *flags: str) -> str | None:
+    for index, item in enumerate(argv):
+        for flag in flags:
+            if item == flag and index + 1 < len(argv):
+                return argv[index + 1]
+            if item.startswith(f"{flag}="):
+                return item.split("=", 1)[1]
+    return None
+
+
 def validate_run_spec(spec: RunSpec) -> None:
     for command in spec.commands:
         name = Path(command.executable).name.lower()
@@ -33,6 +43,10 @@ def validate_run_spec(spec: RunSpec) -> None:
             raise ValueError(f"executable not found: {command.executable}")
         if command.cwd and not Path(command.cwd).is_dir():
             raise ValueError(f"working directory not found: {command.cwd}")
+        if name in {"llama-server", "llama-server.exe"}:
+            host = _argument_value(command.argv, "--host")
+            if host and host.lower() not in {"127.0.0.1", "localhost", "::1"}:
+                raise ValueError("runner only permits llama-server on the loopback interface")
 
 
 def _vram_baseline_mb() -> int | None:
@@ -52,11 +66,23 @@ def _vram_baseline_mb() -> int | None:
     return None
 
 
+async def _terminate_process(process: asyncio.subprocess.Process, grace_seconds: float = 3.0) -> None:
+    if process.returncode is not None:
+        return
+    process.terminate()
+    try:
+        await asyncio.wait_for(process.wait(), timeout=grace_seconds)
+    except TimeoutError:
+        process.kill()
+        await process.wait()
+
+
 class RunManager:
     def __init__(self, store: StudioStore) -> None:
         self.store = store
         self._tasks: dict[str, asyncio.Task[None]] = {}
         self._processes: dict[str, asyncio.subprocess.Process] = {}
+        self._cancelled: set[str] = set()
         self._lock = asyncio.Lock()
 
     async def create(self, spec: RunSpec) -> RunRecord:
@@ -86,8 +112,7 @@ class RunManager:
         try:
             for index, command in enumerate(record.spec.commands):
                 record.current_command = index
-                env = os.environ.copy()
-                env.update(command.env)
+                env = sanitized_child_env(command.env)
                 process = await asyncio.create_subprocess_exec(
                     command.executable,
                     *command.argv,
@@ -103,17 +128,28 @@ class RunManager:
                         process.communicate(), timeout=command.timeout_seconds
                     )
                 except TimeoutError:
-                    process.terminate()
-                    await process.wait()
+                    await _terminate_process(process)
                     raise RuntimeError(f"command {index + 1} timed out")
                 finally:
                     async with self._lock:
                         self._processes.pop(run_id, None)
                 record.return_codes.append(process.returncode or 0)
-                record.stdout_tail = (record.stdout_tail + stdout.decode("utf-8", "replace"))[-TAIL_LIMIT:]
-                record.stderr_tail = (record.stderr_tail + stderr.decode("utf-8", "replace"))[-TAIL_LIMIT:]
+                clean_stdout = redact_secrets(
+                    stdout.decode("utf-8", "replace")[-TAIL_LIMIT:],
+                    limit=TAIL_LIMIT,
+                    preserve_lines=True,
+                )
+                clean_stderr = redact_secrets(
+                    stderr.decode("utf-8", "replace")[-TAIL_LIMIT:],
+                    limit=TAIL_LIMIT,
+                    preserve_lines=True,
+                )
+                record.stdout_tail = (record.stdout_tail + clean_stdout)[-TAIL_LIMIT:]
+                record.stderr_tail = (record.stderr_tail + clean_stderr)[-TAIL_LIMIT:]
                 record.updated_at = datetime.now(timezone.utc)
                 self.store.save_run(record)
+                if run_id in self._cancelled:
+                    raise asyncio.CancelledError
                 if process.returncode != 0:
                     raise RuntimeError(f"command {index + 1} failed with exit code {process.returncode}")
             record.status = "completed"
@@ -121,21 +157,23 @@ class RunManager:
             record.status = "cancelled"
         except Exception as exc:
             record.status = "failed"
-            record.error = str(exc)
+            record.error = redact_secrets(exc)
         finally:
             record.updated_at = datetime.now(timezone.utc)
             self.store.save_run(record)
             async with self._lock:
                 self._tasks.pop(run_id, None)
                 self._processes.pop(run_id, None)
+                self._cancelled.discard(run_id)
 
     async def cancel(self, run_id: str) -> RunRecord:
         async with self._lock:
             process = self._processes.get(run_id)
             task = self._tasks.get(run_id)
             if process and process.returncode is None:
-                process.terminate()
-            if task:
+                self._cancelled.add(run_id)
+                await _terminate_process(process)
+            elif task:
                 task.cancel()
         record = self.store.get_run(run_id)
         if record is None:

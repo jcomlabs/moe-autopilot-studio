@@ -18,6 +18,8 @@ def _json(content: str) -> Any:
 
 
 def parse_import(request: ImportRequest) -> ImportResult:
+    if len(request.content.encode("utf-8")) > MAX_IMPORT_BYTES:
+        raise ValueError("import exceeds 25 MiB")
     if request.kind == "hotlist":
         layers = parse_hotlist(request.content)
         counts = [len(ids) for ids in layers.values()]
@@ -93,4 +95,3 @@ def read_gguf_model(path: str) -> dict[str, Any]:
         "field_count": len(reader.fields),
         "path": path,
     }
-

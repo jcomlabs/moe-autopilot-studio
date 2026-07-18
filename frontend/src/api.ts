@@ -1,4 +1,4 @@
-import type { AdvisorDecision, AnalysisReport, CodexAccount, FixtureRunData, FixtureSummary, RunRecord, WorkloadIntent, HardwareProfile } from './types'
+import type { AdvisorCouncilStatus, AdvisorDecision, AnalysisReport, CodexAccount, FixtureRunData, FixtureSummary, RunRecord, WorkloadIntent, HardwareProfile } from './types'
 
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
   const response = await fetch(url, {
@@ -18,6 +18,7 @@ export const api = {
   analyze: (fixtureId: string, workload: WorkloadIntent, hardware: HardwareProfile) =>
     request<AnalysisReport>('/api/analyze', { method: 'POST', body: JSON.stringify({ fixture_id: fixtureId, workload, hardware }) }),
   account: () => request<CodexAccount>('/api/codex/account'),
+  advisorStatus: (probe = false) => request<AdvisorCouncilStatus>(`/api/advisors/status?probe=${probe ? 'true' : 'false'}`),
   login: () => request<{ auth_url?: string; status: string }>('/api/codex/login', { method: 'POST' }),
   advisor: (userIntent: string, report: AnalysisReport) =>
     request<AdvisorDecision>('/api/advisor', { method: 'POST', body: JSON.stringify({ user_intent: userIntent, report }) }),

@@ -70,6 +70,9 @@ describe('Studio flow', () => {
       if (url === '/api/fixtures') return response({ fixtures: [fixture], manifest: {} })
       if (url.includes('/api/fixtures/coder-next-decode/runs')) return response({ id: fixture.id, name: fixture.name, runs: [], limitations: fixture.limitations, provenance: {} })
       if (url === '/api/codex/account') return response({ available: false, authenticated: false, backend: 'offline' })
+      if (url.startsWith('/api/advisors/status')) return response({
+        mode: 'single', strategy: 'deterministic validation', providers: [],
+      })
       if (url === '/api/runs') return response({ runs: [] })
       if (url === '/api/analyze') return response(report)
       return Promise.resolve(new Response('{}', { status: 404 }))

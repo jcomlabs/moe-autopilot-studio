@@ -1,16 +1,13 @@
 from __future__ import annotations
 
 import os
-import re
 import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
 from .models import CommandSpec
-
-
-ENV_KEY = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+from .security import ENV_KEY, redact_secrets, sanitized_child_env
 
 
 def quote_powershell(value: str) -> str:
@@ -54,8 +51,7 @@ def run_profiler_atomic(command: CommandSpec, hotlist_out: Path, profile_out: Pa
     """Run the profiler and publish both outputs only after a complete success."""
     with tempfile.TemporaryDirectory(prefix="moe-profile-") as temporary:
         cwd = Path(temporary)
-        env = os.environ.copy()
-        env.update(command.env)
+        env = sanitized_child_env(command.env)
         try:
             completed = subprocess.run(
                 [command.executable, *command.argv],
@@ -70,7 +66,7 @@ def run_profiler_atomic(command: CommandSpec, hotlist_out: Path, profile_out: Pa
         except subprocess.TimeoutExpired as exc:
             raise TimeoutError(f"profiler timed out after {command.timeout_seconds} seconds") from exc
         if completed.returncode != 0:
-            raise RuntimeError(f"profiler failed ({completed.returncode}): {completed.stderr[-2000:]}")
+            raise RuntimeError(f"profiler failed ({completed.returncode}): {redact_secrets(completed.stderr[-2000:], 2000)}")
         generated_hotlist = cwd / "aipc_moe_profile.hotlist"
         generated_profile = cwd / "aipc_moe_profile.json"
         if not generated_hotlist.is_file() or not generated_profile.is_file():
