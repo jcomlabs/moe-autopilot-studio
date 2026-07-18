@@ -1,0 +1,17 @@
+{
+  "model": "sanitized-fixture",
+  "system_fingerprint": "build-fixture",
+  "usage": {
+    "prompt_tokens": 42,
+    "completion_tokens": 128,
+    "total_tokens": 170
+  },
+  "timings": {
+    "prompt_n": 42,
+    "prompt_ms": 210.0,
+    "prompt_per_second": 200.0,
+    "predicted_n": 128,
+    "predicted_ms": 1600.0,
+    "predicted_per_second": 80.0
+  }
+}

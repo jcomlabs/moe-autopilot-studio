@@ -1,0 +1,142 @@
+{
+  "id": "gptoss-adaptive",
+  "name": "gpt-oss: coverage is not enough",
+  "summary": "Session history adds 17.1 coverage points but only 2.3% over the corpus arm, exposing routing flatness.",
+  "model": {
+    "id": "gpt-oss-120b-mxfp4",
+    "name": "gpt-oss-120B MXFP4",
+    "architecture": "gpt-oss",
+    "layers": 36,
+    "expert_count": 128,
+    "experts_used": 4,
+    "activation_family": "swiglu_oai",
+    "notes": [
+      "Routing-flatness counterexample: coverage alone is not sufficient."
+    ]
+  },
+  "hardware": {
+    "name": "RTX 5090 / Ryzen 9950X3D / Windows 11",
+    "vram_total_gb": 32.0,
+    "vram_baseline_gb": 1.0,
+    "vram_reserve_gb": 0.5,
+    "ram_budget_gb": 48.0,
+    "ram_bandwidth_gbps": 42.0,
+    "vram_bandwidth_gbps": 1050.0
+  },
+  "default_workload": {
+    "description": "Held-out systems coding prompt",
+    "prompt_tokens": 500,
+    "output_tokens": 300,
+    "objective": "decode_throughput"
+  },
+  "runs": [
+    {
+      "id": "baseline",
+      "label": "No split",
+      "role": "baseline",
+      "protocol": {
+        "instrument": "llama-server/timings.predicted_per_second",
+        "model_id": "gpt-oss-120b-mxfp4",
+        "build_id": "aipc-hardening",
+        "flags": {
+          "n_cpu_moe": 25,
+          "hot_n": 22,
+          "held_out": true,
+          "no_mmap": true,
+          "poll": 100
+        }
+      },
+      "evidence": "measured",
+      "decode_tps": 38.03,
+      "prefill_tps": null,
+      "coverage": 0.0,
+      "hot_n": null,
+      "n_cpu_moe": 25,
+      "model_vram_gb": 21.4,
+      "ram_required_gb": 45.0,
+      "repetitions": [],
+      "source_hashes": [
+        "2ea40587d42ab5498445c8a4d1b16afa16de19f3895575029427c0a7279068be"
+      ],
+      "notes": []
+    },
+    {
+      "id": "corpus",
+      "label": "Generic corpus",
+      "role": "candidate",
+      "protocol": {
+        "instrument": "llama-server/timings.predicted_per_second",
+        "model_id": "gpt-oss-120b-mxfp4",
+        "build_id": "aipc-hardening",
+        "flags": {
+          "n_cpu_moe": 25,
+          "hot_n": 22,
+          "held_out": true,
+          "no_mmap": true,
+          "poll": 100
+        }
+      },
+      "evidence": "measured",
+      "decode_tps": 40.9,
+      "prefill_tps": null,
+      "coverage": 0.28,
+      "hot_n": 22,
+      "n_cpu_moe": 25,
+      "model_vram_gb": 29.63,
+      "ram_required_gb": 45.0,
+      "repetitions": [],
+      "source_hashes": [
+        "2ea40587d42ab5498445c8a4d1b16afa16de19f3895575029427c0a7279068be"
+      ],
+      "notes": []
+    },
+    {
+      "id": "session",
+      "label": "Session history",
+      "role": "candidate",
+      "protocol": {
+        "instrument": "llama-server/timings.predicted_per_second",
+        "model_id": "gpt-oss-120b-mxfp4",
+        "build_id": "aipc-hardening",
+        "flags": {
+          "n_cpu_moe": 25,
+          "hot_n": 22,
+          "held_out": true,
+          "no_mmap": true,
+          "poll": 100
+        }
+      },
+      "evidence": "measured",
+      "decode_tps": 41.85,
+      "prefill_tps": null,
+      "coverage": 0.451,
+      "hot_n": 22,
+      "n_cpu_moe": 25,
+      "model_vram_gb": 29.63,
+      "ram_required_gb": 45.0,
+      "repetitions": [],
+      "source_hashes": [
+        "2ea40587d42ab5498445c8a4d1b16afa16de19f3895575029427c0a7279068be"
+      ],
+      "notes": [
+        "The coverage increase mostly reaches low-traffic tail experts."
+      ]
+    }
+  ],
+  "activation_profile": null,
+  "limitations": [
+    "Values are sanitized from the measured write-up.",
+    "Coverage is not a universal speed proxy on flat-routing models."
+  ],
+  "provenance": {
+    "source_repository": "JigSawPT/moe-autopilot",
+    "source_commit": "e1170152ed074a062c235ee685af08fd3dde6dec",
+    "transformation": "Prompt text and local paths removed; only activation counts, expert ids, protocol metadata, and timings retained.",
+    "source_artifacts": [
+      {
+        "name": "gptoss_maxabs.md",
+        "sha256": "2ea40587d42ab5498445c8a4d1b16afa16de19f3895575029427c0a7279068be"
+      }
+    ]
+  }
+}

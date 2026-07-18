@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "source_commit": "e1170152ed074a062c235ee685af08fd3dde6dec",
+  "fixtures": [
+    "coder-next-decode.json",
+    "coder-next-e2e.json",
+    "gptoss-adaptive.json",
+    "qwen35-decode.json"
+  ]
+}
