@@ -19,9 +19,9 @@ def fixtures_dir() -> Path:
     override = os.getenv("STUDIO_FIXTURES_DIR")
     if override:
         return Path(override).resolve()
-    root_candidate = repository_root() / "fixtures"
-    if root_candidate.exists():
-        return root_candidate
+    for candidate in (repository_root() / "fixtures", Path.cwd() / "fixtures"):
+        if candidate.exists():
+            return candidate
     return PACKAGE_DIR / "fixtures"
 
 
