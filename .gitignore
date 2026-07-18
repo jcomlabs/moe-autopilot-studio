@@ -18,3 +18,4 @@ src/moe_autopilot_studio/static/
 playwright-report/
 test-results/
 .ruff_cache/
+/pages/

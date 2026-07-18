@@ -25,6 +25,10 @@ commands, or the selected experiment.
 The fixture path is fully offline and deterministic. The `Runs` view is the
 optional Windows path for launching a local `llama-bench.exe` A/B.
 
+The [fixture-only web report](https://jigsawpt.github.io/moe-autopilot-studio/)
+is the no-install fallback. Custom workloads, imports, local runs, and ChatGPT
+OAuth remain exclusive to the Windows/source application.
+
 ## Run from source
 
 Requirements: Python 3.11+, Node.js 22+, and Windows, Linux, or WSL.
