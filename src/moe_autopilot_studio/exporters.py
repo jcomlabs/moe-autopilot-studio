@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import html
-import json
 
 from .commands import render_powershell
 from .models import ExportRequest
@@ -47,4 +46,3 @@ def export_report(request: ExportRequest) -> tuple[str, str]:
 <style>body{{font:16px system-ui;max-width:920px;margin:40px auto;padding:0 24px;color:#17211b}}pre{{white-space:pre-wrap;background:#f2f5f3;padding:24px;border:1px solid #ccd5cf;border-radius:6px}}</style>
 </head><body><pre>{html.escape(markdown)}</pre></body></html>"""
     return "text/html", body
-
