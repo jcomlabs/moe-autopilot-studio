@@ -20,4 +20,9 @@ should receive an acknowledgement within seven days. No bounty is offered.
 The API binds to `127.0.0.1`. Local experiments use structured executable,
 argument, environment, and working-directory fields and never invoke a shell.
 The optional advisor delegates authentication to Codex CLI; Studio does not
-store ChatGPT tokens. See `docs/ARCHITECTURE.md` for the complete trust boundary.
+store ChatGPT tokens. Optional Xiaomi and DeepSeek credentials are accepted
+only through the parent process environment, retained in memory, removed from
+all child environments, and never persisted. Do not submit credentials through
+the API or place them in run specifications. Provider responses are schema- and
+grounding-validated before they can be shown to the user or passed to the GPT
+lead. See `docs/ARCHITECTURE.md` for the complete trust boundary.

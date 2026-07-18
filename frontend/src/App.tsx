@@ -34,6 +34,7 @@ import {
 } from 'recharts'
 import { api, downloadReport } from './api'
 import type {
+  AdvisorCouncilStatus,
   AdvisorDecision,
   AnalysisReport,
   CodexAccount,
@@ -76,6 +77,7 @@ function App() {
   const [evidence, setEvidence] = useState<FixtureRunData | null>(null)
   const [account, setAccount] = useState<CodexAccount | null>(null)
   const [advisor, setAdvisor] = useState<AdvisorDecision | null>(null)
+  const [advisorStatus, setAdvisorStatus] = useState<AdvisorCouncilStatus | null>(null)
   const [runs, setRuns] = useState<RunRecord[]>([])
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
@@ -86,16 +88,21 @@ function App() {
     try { setAccount(await api.account()) } catch { setAccount(null) }
   }, [])
 
+  const refreshAdvisorStatus = useCallback(async (probe = false) => {
+    try { setAdvisorStatus(await api.advisorStatus(probe)) } catch { setAdvisorStatus(null) }
+  }, [])
+
   const refreshRuns = useCallback(async () => {
     try { setRuns((await api.runs()).runs) } catch { setRuns([]) }
   }, [])
 
   useEffect(() => {
-    Promise.all([api.fixtures(), api.account(), api.runs()])
-      .then(([fixtureData, accountData, runData]) => {
+    Promise.all([api.fixtures(), api.account(), api.runs(), api.advisorStatus(true)])
+      .then(([fixtureData, accountData, runData, advisorStatusData]) => {
         setFixtures(fixtureData.fixtures)
         setAccount(accountData)
         setRuns(runData.runs)
+        setAdvisorStatus(advisorStatusData)
         const initial = fixtureData.fixtures.find((item) => item.id === 'coder-next-e2e') ?? fixtureData.fixtures[0]
         if (initial) {
           setSelectedId(initial.id)
@@ -145,7 +152,7 @@ function App() {
     try {
       const result = await api.login()
       if (result.auth_url) window.open(result.auth_url, '_blank', 'noopener,noreferrer')
-      window.setTimeout(refreshAccount, 3000)
+      window.setTimeout(() => { void refreshAccount(); void refreshAdvisorStatus(true) }, 3000)
     } catch (reason) { setError(reason instanceof Error ? reason.message : String(reason)) }
     finally { setBusy(false) }
   }
@@ -184,6 +191,7 @@ function App() {
           report={report}
           evidence={evidence}
           advisor={advisor}
+          advisorStatus={advisorStatus}
           busy={busy}
           account={account}
           onChoose={chooseFixture}
@@ -208,6 +216,7 @@ interface StudioProps {
   report: AnalysisReport | null
   evidence: FixtureRunData | null
   advisor: AdvisorDecision | null
+  advisorStatus: AdvisorCouncilStatus | null
   account: CodexAccount | null
   busy: boolean
   onChoose: (fixture: FixtureSummary) => void
@@ -219,7 +228,7 @@ interface StudioProps {
 }
 
 function StudioView(props: StudioProps) {
-  const { fixtures, selected, workload, hardware, report, evidence, advisor, busy } = props
+  const { fixtures, selected, workload, hardware, report, evidence, advisor, advisorStatus, busy } = props
   const recommendation = report?.candidates.find((candidate) => candidate.run_id === report.recommendation_id)
   const VerdictIcon = report ? verdictMeta[report.verdict].icon : CircleGauge
 
@@ -295,13 +304,15 @@ function StudioView(props: StudioProps) {
         </section>
 
         <section className="advisor-section">
-          <div className="advisor-heading"><Bot size={20} /><div><h2>GPT-5.6 advisor</h2><p>Explains the deterministic verdict; never computes it.</p></div><span className="advisor-backend">{advisor?.backend ?? (props.account?.authenticated ? props.account.backend : 'offline')}</span></div>
+          <div className="advisor-heading"><Bot size={20} /><div><h2>{advisorStatus?.mode === 'moa' ? 'Bounded advisor council' : 'GPT-5.6 advisor'}</h2><p>{advisorStatus?.strategy ?? 'Explains the deterministic verdict; never computes it.'}</p></div><span className="advisor-backend">{advisor?.backend ?? (advisorStatus?.mode ?? 'offline')}</span></div>
           <div className="advisor-body">
             <p>{advisor?.rationale ?? 'Ask the advisor to translate the measured trade-offs into the next concrete experiment.'}</p>
+            {advisorStatus?.providers.length ? <div className="provider-strip">{advisorStatus.providers.map((provider) => <span key={provider.id} className={`provider-chip ${provider.available ? 'provider-ready' : 'provider-offline'}`} title={provider.error ?? provider.model}><i />{provider.label}{provider.latency_ms != null ? ` · ${provider.latency_ms} ms` : ''}</span>)}</div> : null}
             {advisor?.risk_flags.length ? <div className="risk-list">{advisor.risk_flags.map((flag) => <span key={flag}>{flag}</span>)}</div> : null}
+            {advisor?.members.length ? <div className="member-grid">{advisor.members.map((member) => <article key={member.provider} className={`member-${member.status}`}><div><b>{member.label}</b><span>{member.status} · {member.latency_ms} ms</span></div><small>{member.error ?? member.rationale ?? member.model}</small></article>)}</div> : null}
           </div>
           <div className="advisor-actions">
-            <button onClick={props.account?.authenticated ? props.onAdvisor : props.onConnect} disabled={busy}>{props.account?.authenticated ? <><Bot size={16} />Explain with GPT-5.6</> : <><LogIn size={16} />Connect ChatGPT</>}</button>
+            <button onClick={props.account?.authenticated ? props.onAdvisor : props.onConnect} disabled={busy}>{props.account?.authenticated ? <><Bot size={16} />{advisorStatus?.mode === 'moa' ? 'Consult council' : 'Explain with GPT-5.6'}</> : <><LogIn size={16} />Connect ChatGPT</>}</button>
             {report && <button className="icon-command" title="Export JSON" onClick={() => downloadReport('json', report)}><FileJson size={17} /></button>}
             {report && <button className="icon-command" title="Export HTML report" onClick={() => downloadReport('html', report)}><Download size={17} /></button>}
           </div>

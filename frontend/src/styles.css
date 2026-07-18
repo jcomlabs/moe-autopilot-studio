@@ -145,6 +145,19 @@ code { color: #405048; font: 10px ui-monospace, SFMono-Regular, Consolas, monosp
 .advisor-backend { margin-left: auto; padding: 3px 5px; color: #405c92; background: var(--blue-soft); border-radius: 3px; font-size: 8px; font-weight: 750; }
 .advisor-body { padding: 12px 15px; }
 .advisor-body > p { margin: 0; color: #465149; font-size: 11px; line-height: 1.55; }
+.provider-strip { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.provider-chip { display: inline-flex; align-items: center; gap: 5px; padding: 4px 6px; border: 1px solid var(--line); border-radius: 3px; color: var(--muted); background: #f7f9f7; font-size: 8px; font-weight: 700; }
+.provider-chip i { width: 6px; height: 6px; border-radius: 50%; background: #8b9690; }
+.provider-ready i { background: #238052; }
+.provider-offline { color: #7d514a; background: #fff7f4; }
+.member-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+.member-grid article { min-width: 0; padding: 7px 8px; border: 1px solid var(--line); border-left: 3px solid #238052; border-radius: 3px; background: #fbfcfb; }
+.member-grid article.member-rejected, .member-grid article.member-unavailable { border-left-color: #bd4a3e; }
+.member-grid article > div { display: flex; justify-content: space-between; gap: 7px; }
+.member-grid b, .member-grid span, .member-grid small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.member-grid b { font-size: 9px; }
+.member-grid span { color: var(--muted); font-size: 8px; }
+.member-grid small { display: block; margin-top: 4px; color: var(--muted); font-size: 8px; }
 .risk-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
 .risk-list span { padding: 3px 5px; color: #6d4c1e; background: var(--amber-soft); border-radius: 3px; font-size: 8px; }
 .advisor-actions { display: flex; align-items: center; gap: 6px; padding: 11px; }
@@ -190,6 +203,7 @@ code { color: #405048; font: 10px ui-monospace, SFMono-Regular, Consolas, monosp
   .chart-grid { grid-template-columns: 1fr; }
   .advisor-section { grid-template-columns: 1fr; }
   .advisor-heading { border-right: 0; border-bottom: 1px solid var(--line); }
+  .member-grid { grid-template-columns: 1fr; }
   .advisor-actions { border-top: 1px solid var(--line); }
   .metric-row { grid-template-columns: 1fr 1fr; }
   .metric:nth-child(2) { border-right: 0; }

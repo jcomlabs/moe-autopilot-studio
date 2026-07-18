@@ -8,6 +8,8 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, computed_field, field_validator
 
+from .security import validate_public_argv, validate_public_env, validate_public_text
+
 
 class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -176,7 +178,22 @@ class CommandSpec(StrictModel):
     def executable_required(cls, value: str) -> str:
         if not value.strip():
             raise ValueError("executable cannot be empty")
-        return value
+        return validate_public_text(value, field="executable")
+
+    @field_validator("argv")
+    @classmethod
+    def safe_arguments(cls, value: list[str]) -> list[str]:
+        return validate_public_argv(value)
+
+    @field_validator("cwd")
+    @classmethod
+    def safe_working_directory(cls, value: str | None) -> str | None:
+        return validate_public_text(value, field="cwd") if value is not None else None
+
+    @field_validator("env")
+    @classmethod
+    def safe_environment(cls, value: dict[str, str]) -> dict[str, str]:
+        return validate_public_env(value)
 
 
 class RunSpec(StrictModel):
@@ -202,8 +219,8 @@ class RunRecord(StrictModel):
 
 class ImportRequest(StrictModel):
     kind: Literal["profile", "hotlist", "llama_bench", "server_timing"]
-    content: str
-    filename: str = "upload"
+    content: str = Field(max_length=25 * 1024 * 1024)
+    filename: str = Field(default="upload", min_length=1, max_length=255)
 
 
 class ImportResult(StrictModel):
@@ -216,7 +233,6 @@ class CodexAccount(StrictModel):
     authenticated: bool
     auth_mode: str | None = None
     plan_type: str | None = None
-    email: str | None = None
     backend: Literal["app-server", "exec", "offline"] = "offline"
     error: str | None = None
 
@@ -234,13 +250,43 @@ class AdvisorRequest(StrictModel):
     report: AnalysisReport
 
 
+class AdvisorProviderStatus(StrictModel):
+    id: str
+    label: str
+    configured: bool
+    available: bool
+    model: str
+    auth: Literal["oauth", "environment", "none"]
+    latency_ms: int | None = Field(default=None, ge=0)
+    error: str | None = None
+
+
+class AdvisorCouncilStatus(StrictModel):
+    mode: Literal["single", "moa"]
+    strategy: str
+    providers: list[AdvisorProviderStatus]
+
+
+class AdvisorMemberResult(StrictModel):
+    provider: str
+    label: str
+    model: str
+    status: Literal["accepted", "rejected", "unavailable"]
+    latency_ms: int = Field(ge=0)
+    recommendation_id: str | None = None
+    rationale: str | None = None
+    error: str | None = None
+
+
 class AdvisorDecision(StrictModel):
     recommendation_id: str | None
     rationale: str
     risk_flags: list[str] = Field(default_factory=list)
     assumptions: list[str] = Field(default_factory=list)
-    backend: Literal["app-server", "exec", "offline"]
+    backend: Literal["app-server", "exec", "offline", "xiaomi", "deepseek", "moa"]
     model: str
+    members: list[AdvisorMemberResult] = Field(default_factory=list)
+    quorum: int = Field(default=0, ge=0)
 
 
 class ExportRequest(StrictModel):

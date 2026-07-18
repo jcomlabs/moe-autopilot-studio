@@ -82,8 +82,35 @@ export interface CodexAccount {
   authenticated: boolean
   auth_mode?: string | null
   plan_type?: string | null
-  email?: string | null
   backend: 'app-server' | 'exec' | 'offline'
+  error?: string | null
+}
+
+export interface AdvisorProviderStatus {
+  id: string
+  label: string
+  configured: boolean
+  available: boolean
+  model: string
+  auth: 'oauth' | 'environment' | 'none'
+  latency_ms: number | null
+  error?: string | null
+}
+
+export interface AdvisorCouncilStatus {
+  mode: 'single' | 'moa'
+  strategy: string
+  providers: AdvisorProviderStatus[]
+}
+
+export interface AdvisorMemberResult {
+  provider: string
+  label: string
+  model: string
+  status: 'accepted' | 'rejected' | 'unavailable'
+  latency_ms: number
+  recommendation_id?: string | null
+  rationale?: string | null
   error?: string | null
 }
 
@@ -92,8 +119,10 @@ export interface AdvisorDecision {
   rationale: string
   risk_flags: string[]
   assumptions: string[]
-  backend: 'app-server' | 'exec' | 'offline'
+  backend: 'app-server' | 'exec' | 'offline' | 'xiaomi' | 'deepseek' | 'moa'
   model: string
+  members: AdvisorMemberResult[]
+  quorum: number
 }
 
 export interface FixtureRunData {
@@ -132,4 +161,3 @@ export interface RunRecord {
   vram_baseline_mb: number | null
   error: string | null
 }
-

@@ -5,9 +5,11 @@ local mixture-of-experts model should use a measured hot-expert split. It turns
 workload shape, hardware budgets, and protocol-compatible evidence into one of
 three verdicts: `ENABLE`, `DISABLE`, or `MEASURE`.
 
-The arithmetic is deterministic. GPT-5.6 Sol is an optional explanation layer
-reached through Codex App Server and ChatGPT OAuth; it cannot change metrics,
-commands, or the selected experiment.
+The arithmetic is deterministic. The optional advisor can run as a bounded
+mixture of agents: Xiaomi MiMo and DeepSeek independently review the report,
+then GPT-5.6 Sol synthesizes only validated opinions through Codex App Server
+and ChatGPT OAuth. No model can change metrics, commands, or the selected
+experiment.
 
 ![MoE Autopilot Studio deterministic workload analysis](docs/assets/studio-desktop.png)
 
@@ -22,6 +24,7 @@ commands, or the selected experiment.
 5. Open `Coder-Next: session transfer` to see the protocol-compatible
    68.56% coverage and +22.22% decode result.
 6. Optionally connect ChatGPT and ask GPT-5.6 to explain the current verdict.
+   Configure Xiaomi and DeepSeek to enable the full three-member council.
 
 The fixture path is fully offline and deterministic. The `Runs` view is the
 optional Windows path for launching a local `llama-bench.exe` A/B.
@@ -52,6 +55,23 @@ sign in with ChatGPT. Tokens remain owned by Codex; Studio never stores them.
 codex login
 ```
 
+The external council members are opt-in and configured only through process
+environment variables. Never place real keys in a project file or run spec.
+
+```powershell
+$env:XIAOMI_API_KEY = "<xiaomi-api-key>"
+$env:XIAOMI_BASE_URL = "https://token-plan-ams.xiaomimimo.com/v1"
+$env:DEEPSEEK_API_KEY = "<deepseek-api-key>"
+MoEAutopilotStudio.exe
+```
+
+Optional overrides are `XIAOMI_MODEL`, `DEEPSEEK_MODEL`,
+`DEEPSEEK_BASE_URL`, `XIAOMI_TIMEOUT_SECONDS`, and
+`DEEPSEEK_TIMEOUT_SECONDS`. Provider keys are held in memory, are never written
+to SQLite, and are removed from every Codex, profiler, and llama.cpp child
+process environment. Without either key, the remaining advisors and the fully
+offline deterministic engine continue to work.
+
 ## What the evidence says
 
 All public fixtures are prompt-free transformations with hashes of their source
@@ -76,7 +96,7 @@ claims. Recalibrate before applying them to another model, build, or machine.
 
 ## Maturity and limits
 
-Studio is experimental `v0.1` research tooling, not an automatic production
+Studio is experimental `v0.2` research tooling, not an automatic production
 optimizer. It does not implement a new cache algorithm, dynamic caching, V3,
 training, or DeltaMoE. Its bundled measurements come from one Windows
 workstation and must not be generalized to a different model, build, or machine
@@ -107,7 +127,9 @@ Build the Windows release with:
 
 The local API binds only to `127.0.0.1`. Experiment commands are stored as
 `executable`, `argv`, and `env`, executed without a shell, and restricted to
-known llama.cpp binaries. Project and run state lives under
+known llama.cpp binaries. Secret-bearing fields are rejected, child
+environments are sanitized, logs are redacted before persistence, and
+`llama-server` is restricted to loopback. Project and run state lives under
 `%LOCALAPPDATA%\MoEAutopilotStudio`.
 
 ## License

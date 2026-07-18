@@ -18,6 +18,8 @@ def free_port() -> int:
 
 def main() -> None:
     host = os.getenv("STUDIO_HOST", "127.0.0.1")
+    if host.lower() not in {"127.0.0.1", "localhost", "::1"}:
+        raise ValueError("The Windows Studio launcher only binds to the loopback interface")
     requested = int(os.getenv("STUDIO_PORT", "0"))
     port = requested or free_port()
     if os.getenv("STUDIO_OPEN_BROWSER", "1") == "1":

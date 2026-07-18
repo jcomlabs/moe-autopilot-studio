@@ -10,15 +10,22 @@ flowchart LR
     API --> Store[Local SQLite]
     API --> Runner[Sequential argv runner]
     Runner --> Llama[Allow-listed llama.cpp tools]
-    API --> Bridge[Codex bridge]
+    API --> Council[Bounded advisor council]
+    Council --> Xiaomi[Xiaomi MiMo]
+    Council --> DeepSeek[DeepSeek]
+    Council --> Bridge[Codex bridge and lead]
     Bridge --> AppServer[Codex App Server over stdio]
     AppServer --> ChatGPT[ChatGPT OAuth and GPT-5.6 Sol]
 ```
 
 The engine owns coverage, protocol compatibility, budgets, latency, ranking,
-verdicts, and structured commands. The model receives only the user's intent
-and a bounded `AnalysisReport`. It may explain the selected ID but cannot add an
-ID, change the recommendation, or introduce an unsupported number.
+verdicts, and structured commands. Each advisor receives only the user's intent
+and a bounded `AnalysisReport`. Xiaomi and DeepSeek run concurrently. Their
+responses are parsed against the same schema, recommendation ID, and numeric
+grounding rules before GPT receives them. GPT may synthesize accepted opinions
+but cannot add an ID, change the recommendation, or introduce an unsupported
+number. Partial provider failure degrades to the remaining members or the
+deterministic explanation.
 
 ## Core contracts
 
@@ -58,6 +65,20 @@ ChatGPT auth, then starts an ephemeral GPT-5.6 Sol thread with:
 If App Server fails, `codex exec --ephemeral` implements the same schema and
 validation. If Codex or login is unavailable, the deterministic explanation is
 returned offline.
+
+## Provider and secret boundary
+
+Xiaomi and DeepSeek use OpenAI-compatible HTTPS endpoints configured from
+environment variables. Redirects, URL credentials, non-HTTPS remote URLs,
+oversized responses, unknown experiment IDs, and ungrounded numeric claims are
+rejected. Keys are held only by the Studio process and are not included in
+reports, member results, logs, SQLite, exports, or child process environments.
+Error bodies from providers are not returned to the UI.
+
+Run specifications reject secret-like values and sensitive flag names. Runner
+output is redacted before persistence. The runner allows only known llama.cpp
+executables, uses argv execution without a shell, and prevents `llama-server`
+from binding beyond loopback.
 
 ## Deployment modes
 

@@ -10,6 +10,7 @@ from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 
 from .codex_client import CodexBridge
+from .advisor import AdvisorCouncil
 from .engine import analyze
 from .exporters import export_report
 from .fixtures import fixture_summaries, get_fixture, manifest
@@ -24,20 +25,22 @@ from .parsers import parse_import
 from .paths import static_dir
 from .runner import RunManager
 from .storage import StudioStore
+from .security import redact_secrets
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     store = StudioStore()
     app.state.run_manager = RunManager(store)
-    app.state.codex = CodexBridge(model=os.getenv("STUDIO_CODEX_MODEL", "gpt-5.6-sol"))
+    codex = CodexBridge(model=os.getenv("STUDIO_CODEX_MODEL", "gpt-5.6-sol"))
+    app.state.advisors = AdvisorCouncil(codex)
     yield
-    await app.state.codex.stop()
+    await app.state.advisors.stop()
 
 
 app = FastAPI(
     title="MoE Autopilot Studio",
-    version="0.1.2",
+    version="0.2.0",
     lifespan=lifespan,
     docs_url="/api/docs",
     openapi_url="/api/openapi.json",
@@ -140,7 +143,18 @@ async def codex_account(request: Request):
             "backend": "offline",
             "error": "Hosted demo uses deterministic fixture mode; connect ChatGPT in the Windows app.",
         }
-    return await request.app.state.codex.account()
+    return await request.app.state.advisors.codex.account()
+
+
+@app.get("/api/advisors/status")
+async def advisor_status(request: Request, probe: bool = False):
+    if hosted_mode():
+        return {
+            "mode": "single",
+            "strategy": "deterministic hosted explanation",
+            "providers": [],
+        }
+    return await request.app.state.advisors.status(probe=probe)
 
 
 @app.post("/api/codex/login")
@@ -148,20 +162,23 @@ async def codex_login(request: Request, device_code: bool = False):
     if hosted_mode():
         raise HTTPException(status_code=403, detail="ChatGPT login is local-only")
     try:
-        return await request.app.state.codex.login(device_code=device_code)
+        return await request.app.state.advisors.codex.login(device_code=device_code)
     except Exception as exc:
-        raise HTTPException(status_code=502, detail=str(exc)) from exc
+        raise HTTPException(status_code=502, detail=redact_secrets(exc)) from exc
 
 
 @app.post("/api/advisor")
 async def advisor(payload: AdvisorRequest, request: Request):
-    canonical = analyze(
-        AnalysisRequest(
-            fixture_id=payload.report.fixture_id,
-            workload=payload.report.workload,
-            hardware=payload.report.hardware,
+    try:
+        canonical = analyze(
+            AnalysisRequest(
+                fixture_id=payload.report.fixture_id,
+                workload=payload.report.workload,
+                hardware=payload.report.hardware,
+            )
         )
-    )
+    except (KeyError, ValueError) as exc:
+        raise HTTPException(status_code=400, detail=str(exc)) from exc
     if canonical.recommendation_id != payload.report.recommendation_id:
         raise HTTPException(status_code=400, detail="advisor report does not match the deterministic engine")
     safe_payload = AdvisorRequest(user_intent=payload.user_intent, report=canonical)
@@ -169,14 +186,22 @@ async def advisor(payload: AdvisorRequest, request: Request):
         from .codex_client import _offline_decision
 
         return _offline_decision(safe_payload, "hosted fixture mode")
-    return await request.app.state.codex.advise(safe_payload)
+    return await request.app.state.advisors.advise(safe_payload)
 
 
 @app.post("/api/export")
 async def export(payload: ExportRequest):
     try:
-        media_type, content = export_report(payload)
-    except ValueError as exc:
+        canonical = analyze(
+            AnalysisRequest(
+                fixture_id=payload.report.fixture_id,
+                workload=payload.report.workload,
+                hardware=payload.report.hardware,
+            )
+        )
+        safe_payload = payload.model_copy(update={"report": canonical})
+        media_type, content = export_report(safe_payload)
+    except (KeyError, ValueError) as exc:
         raise HTTPException(status_code=400, detail=str(exc)) from exc
     extension = {"application/json": "json", "text/markdown": "md", "text/html": "html", "text/plain": "ps1"}[media_type]
     return Response(
