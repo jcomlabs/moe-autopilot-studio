@@ -13,17 +13,23 @@ if (-not (Test-Path -LiteralPath $Python)) {
 Push-Location (Join-Path $Root "frontend")
 try {
     npm ci
+    if ($LASTEXITCODE -ne 0) { throw "npm ci failed with exit code $LASTEXITCODE." }
     npm test
+    if ($LASTEXITCODE -ne 0) { throw "npm test failed with exit code $LASTEXITCODE." }
     npm run build
+    if ($LASTEXITCODE -ne 0) { throw "npm build failed with exit code $LASTEXITCODE." }
 } finally {
     Pop-Location
 }
 
 & $Python -m pytest
+if ($LASTEXITCODE -ne 0) { throw "pytest failed with exit code $LASTEXITCODE." }
 & $Python -m pip install -e "${Root}[package]"
+if ($LASTEXITCODE -ne 0) { throw "package dependency install failed with exit code $LASTEXITCODE." }
 Push-Location $Root
 try {
     & $Python -m PyInstaller --noconfirm --clean .\MoEAutopilotStudio.spec
+    if ($LASTEXITCODE -ne 0) { throw "PyInstaller failed with exit code $LASTEXITCODE." }
     $Zip = Join-Path $Root "dist\MoEAutopilotStudio-$Version-win-x64.zip"
     if (Test-Path -LiteralPath $Zip) {
         Remove-Item -LiteralPath $Zip
