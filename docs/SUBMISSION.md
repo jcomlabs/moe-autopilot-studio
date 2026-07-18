@@ -7,11 +7,11 @@
 **Tagline:** A Windows lab that turns measured MoE routing evidence into a
 reproducible ENABLE, DISABLE, or MEASURE decision.
 
-**Public demo:** https://jigsawpt.github.io/moe-autopilot-studio/
+**Public demo:** https://jcomlabs.github.io/moe-autopilot-studio/
 
-**Repository:** https://github.com/JigSawPT/moe-autopilot-studio
+**Repository:** https://github.com/jcomlabs/moe-autopilot-studio
 
-**Windows release:** https://github.com/JigSawPT/moe-autopilot-studio/releases/latest
+**Windows release:** https://github.com/jcomlabs/moe-autopilot-studio/releases/latest
 
 ## Problem
 

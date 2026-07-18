@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "moe-autopilot-studio"
-version = "0.1.0"
+version = "0.1.2"
 description = "Evidence-grounded planning and experiment tooling for local MoE inference."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -34,9 +34,9 @@ package = ["pyinstaller>=6.12,<7"]
 moe-autopilot-studio = "moe_autopilot_studio.launcher:main"
 
 [project.urls]
-Homepage = "https://github.com/JigSawPT/moe-autopilot-studio"
-Repository = "https://github.com/JigSawPT/moe-autopilot-studio"
-Issues = "https://github.com/JigSawPT/moe-autopilot-studio/issues"
+Homepage = "https://github.com/jcomlabs/moe-autopilot-studio"
+Repository = "https://github.com/jcomlabs/moe-autopilot-studio"
+Issues = "https://github.com/jcomlabs/moe-autopilot-studio/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
