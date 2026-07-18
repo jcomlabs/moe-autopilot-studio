@@ -37,7 +37,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(
     title="MoE Autopilot Studio",
-    version="0.1.0",
+    version="0.1.2",
     lifespan=lifespan,
     docs_url="/api/docs",
     openapi_url="/api/openapi.json",
@@ -193,4 +193,3 @@ else:
     @app.get("/", response_class=HTMLResponse)
     async def missing_frontend() -> str:
         return "<h1>MoE Autopilot Studio</h1><p>Frontend not built. Run <code>npm run build</code> in frontend/.</p>"
-

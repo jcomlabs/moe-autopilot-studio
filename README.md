@@ -14,7 +14,7 @@ commands, or the selected experiment.
 ## Quickstart
 
 1. Download and extract the latest Windows x64 ZIP from
-   [Releases](https://github.com/JigSawPT/moe-autopilot-studio/releases/latest).
+   [Releases](https://github.com/jcomlabs/moe-autopilot-studio/releases/latest).
 2. Run `MoEAutopilotStudio.exe`. No Python, GPU, model, or Codex is required.
 3. Open `Coder-Next: prefill versus decode` and select `Total latency`.
 4. Compare the default chat workload with a prompt-heavy workload such as
@@ -26,7 +26,7 @@ commands, or the selected experiment.
 The fixture path is fully offline and deterministic. The `Runs` view is the
 optional Windows path for launching a local `llama-bench.exe` A/B.
 
-The [fixture-only web report](https://jigsawpt.github.io/moe-autopilot-studio/)
+The [fixture-only web report](https://jcomlabs.github.io/moe-autopilot-studio/)
 is the no-install fallback. Custom workloads, imports, local runs, and ChatGPT
 OAuth remain exclusive to the Windows/source application.
 

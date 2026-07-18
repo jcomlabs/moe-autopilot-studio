@@ -178,7 +178,7 @@ class CodexBridge:
                     "clientInfo": {
                         "name": "moe_autopilot_studio",
                         "title": "MoE Autopilot Studio",
-                        "version": "0.1.0",
+                        "version": "0.1.2",
                     }
                 },
                 timeout=15,
