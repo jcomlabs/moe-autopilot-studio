@@ -34,12 +34,12 @@
 
     The guardrail is protocol compatibility. The Studio joins prefill and decode only when model, build, flags, and instrument match. An older break-even near 2.3 is not blended in. The measured protocol recomputes 19.2.
 
-## Line 5 - AI inside the boundary (Frame 5)
+## Line 5 - A bounded council (Frame 5)
 
-**Time:** 59.0 - 75.0s
-**Delivery:** Emphasize the division of responsibility, not the model name.
+**Time:** 51.0 - 71.2s
+**Delivery:** Build from parallel review to the locked authority boundary.
 
-    GPT-5.6 does the language work, not the arithmetic. Through Codex App Server and ChatGPT OAuth, it explains the structured report and proposes only experiments the engine already produced. The verdict cannot be overwritten.
+    Two independent scouts, Xiaomi MiMo and DeepSeek, review the same bounded report in parallel. GPT-5.6 synthesizes only validated opinions. The engine still owns every number, command, and experiment ID. In the live test, all three agreed. No model can overwrite the verdict.
 
 ## Line 6 - From verdict to Windows run (Frame 6)
 

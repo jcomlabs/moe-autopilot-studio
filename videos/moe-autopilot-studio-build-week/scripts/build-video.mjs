@@ -132,27 +132,33 @@ const frames = [
   },
   {
     id: "05-bounded-advisor",
-    duration: 15.979,
+    duration: 20.139,
     transition: "crossfade",
-    voice: "GPT-5.6 does the language work, not the arithmetic. Through Codex App Server and ChatGPT OAuth, it explains the structured report and proposes only experiments the engine already produced. The verdict cannot be overwritten.",
+    voice: "Two independent scouts, Xiaomi MiMo and DeepSeek, review the same bounded report in parallel. GPT-5.6 synthesizes only validated opinions. The engine still owns every number, command, and experiment ID. In the live test, all three agreed. No model can overwrite the verdict.",
     body: `
-      <div class="ground paper"></div><div class="topbar"><span>BOUNDED ADVISOR / 05</span><span>GPT-5.6 + APP SERVER</span></div>
-      <div id="advisor-window" class="advisor-window"><img src="assets/studio-advisor.png" alt="Live GPT-5.6 explanation"></div>
-      <div id="roles" class="role-stack mono"><span><b>ENGINE</b> CALCULATE</span><span><b>GPT-5.6</b> EXPLAIN</span><span><b>USER</b> CONFIRM</span></div>
-      <div id="cursor" class="cursor">↖</div><div id="ripple" class="ripple"></div>
-      <div id="advisor-lock" class="advisor-lock mono">VERDICT LOCKED / INVALID EXPERIMENT IDS REJECTED</div>`,
+      <div class="ground paper"></div><div class="topbar"><span>BOUNDED COUNCIL / 05</span><span>MIMO + DEEPSEEK → GPT-5.6</span></div>
+      <div id="advisor-window" class="advisor-window"><img src="assets/studio-advisor.png" alt="Validated three-member advisor council"></div>
+      <div id="council" class="council mono">
+        <span><small>SCOUT 01</small><b>XIAOMI MIMO</b><em>ACCEPTED</em></span>
+        <i>↓</i>
+        <span><small>SCOUT 02</small><b>DEEPSEEK</b><em>ACCEPTED</em></span>
+        <i>↓</i>
+        <span class="lead"><small>SYNTHESIS</small><b>GPT-5.6</b><em>ACCEPTED</em></span>
+      </div>
+      <div id="quorum" class="quorum serif"><b>3 / 3</b><span>VALIDATED QUORUM</span></div>
+      <div id="advisor-lock" class="advisor-lock mono">ENGINE OWNS NUMBERS · COMMANDS · EXPERIMENT IDS</div>`,
     css: `
-      .advisor-window{position:absolute;left:120px;top:145px;width:1440px;height:900px;border:2px solid ${palette.ink};background:${palette.white};overflow:hidden}.advisor-window img{width:100%;height:100%;object-fit:cover}
-      .role-stack{position:absolute;right:78px;top:220px;width:355px;display:grid;gap:10px}.role-stack span{padding:18px;background:${palette.deep};color:${palette.white};font-size:17px;letter-spacing:.08em}.role-stack b{color:${palette.mint};margin-right:12px}
-      .cursor{position:absolute;right:190px;bottom:160px;font-size:54px;color:${palette.blue};text-shadow:0 2px 0 #fff}.ripple{position:absolute;right:205px;bottom:178px;width:80px;height:80px;border:4px solid ${palette.blue};border-radius:50%}
-      .advisor-lock{position:absolute;left:420px;bottom:165px;padding:16px 24px;background:${palette.deep};color:${palette.mint};font-size:17px;letter-spacing:.09em}
+      .advisor-window{position:absolute;left:85px;top:135px;width:1510px;height:805px;border:2px solid ${palette.ink};background:${palette.white};overflow:hidden}.advisor-window img{width:100%;height:100%;object-fit:cover;object-position:top}
+      .council{position:absolute;right:75px;top:165px;width:360px;display:grid;gap:8px}.council span{display:grid;grid-template-columns:1fr auto;padding:18px 20px;background:${palette.deep};color:${palette.white};box-shadow:0 8px 20px #10201828}.council small{grid-column:1/-1;color:${palette.mint};font-size:13px;letter-spacing:.12em}.council b{margin-top:7px;font-size:20px;letter-spacing:.05em}.council em{align-self:end;font-style:normal;color:${palette.mint};font-size:12px;letter-spacing:.08em}.council .lead{background:${palette.blue}}.council i{height:18px;text-align:center;color:${palette.green};font-style:normal;font-size:22px;line-height:18px}
+      .quorum{position:absolute;right:75px;top:680px;width:360px;padding:20px 24px;border:2px solid ${palette.green};background:${palette.white}}.quorum b{display:block;color:${palette.green};font-size:70px;line-height:.9}.quorum span{font:600 14px 'JetBrains Mono',monospace;letter-spacing:.12em}
+      .advisor-lock{position:absolute;left:330px;bottom:150px;padding:16px 24px;background:${palette.deep};color:${palette.mint};font-size:16px;letter-spacing:.08em}
     `,
     timeline: `
       tl.fromTo("#advisor-window",{opacity:0,y:55},{opacity:1,y:0,duration:1,ease:"power3.out"},.2)
-        .fromTo("#cursor",{opacity:0,x:180,y:120},{opacity:1,x:0,y:0,duration:1.2,ease:"power3.out"},2.4)
-        .fromTo("#ripple",{opacity:0,scale:.2},{opacity:1,scale:1,duration:.35,ease:"power2.out"},3.45).to("#ripple",{opacity:0,scale:1.8,duration:.5,ease:"power2.out",overwrite:"auto"},3.82)
-        .fromTo("#roles span",{opacity:0,x:80},{opacity:1,x:0,duration:.55,stagger:.7,ease:"power3.out"},4.4)
-        .fromTo("#advisor-lock",{opacity:0,scaleX:.4,transformOrigin:"center"},{opacity:1,scaleX:1,duration:.8,ease:"power3.out"},12.2);`,
+        .fromTo("#council span",{opacity:0,x:100},{opacity:1,x:0,duration:.65,stagger:2.1,ease:"power3.out"},2.2)
+        .fromTo("#council i",{opacity:0,scaleY:0,transformOrigin:"top"},{opacity:1,scaleY:1,duration:.4,stagger:2.1,ease:"power2.out"},3.6)
+        .fromTo("#quorum",{opacity:0,scale:.7},{opacity:1,scale:1,duration:.8,ease:"back.out(1.4)"},11.2)
+        .fromTo("#advisor-lock",{opacity:0,scaleX:.4,transformOrigin:"center"},{opacity:1,scaleX:1,duration:.8,ease:"power3.out"},16.8);`,
   },
   {
     id: "06-windows-runner",

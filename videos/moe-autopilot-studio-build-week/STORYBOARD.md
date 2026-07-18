@@ -99,11 +99,11 @@ Scene 2 (4.0-8.3s): Four mono chips - MODEL, BUILD, FLAGS, INSTRUMENT - assemble
 Scene 3 (8.3-12.2s): The older `2.3` value enters from the left, hits a protocol boundary, and is displaced out (`reactive-displacement`); a small `INCOMPATIBLE` marker remains.
 Scene 4 (12.2-17.0s): `19.2 : 1` counts up center-frame beside `MEASURED TOGETHER`; the evidence screenshot stays visible as the receipt and the shot holds.
 
-## Frame 5 - AI inside the boundary
+## Frame 5 - A bounded council
 
-- scene: A bounded GPT-5.6 explanation appears beside the unchanged deterministic verdict.
-- voiceover: "GPT-5.6 does the language work, not the arithmetic. Through Codex App Server and ChatGPT OAuth, it explains the structured report and proposes only experiments the engine already produced. The verdict cannot be overwritten."
-- duration: 15.979s
+- scene: Two parallel scouts feed validated opinions to a GPT-5.6 lead beside the unchanged deterministic verdict.
+- voiceover: "Two independent scouts, Xiaomi MiMo and DeepSeek, review the same bounded report in parallel. GPT-5.6 synthesizes only validated opinions. The engine still owns every number, command, and experiment ID. In the live test, all three agreed. No model can overwrite the verdict."
+- duration: 20.139s
 - poster: 13s
 - transition_in: crossfade
 - status: animated
@@ -112,15 +112,15 @@ Scene 4 (12.2-17.0s): `19.2 : 1` counts up center-frame beside `MEASURED TOGETHE
 - persuasion: Trust through constrained AI
 - beat: confidence
 - blueprint: cursor-ui-demo
-- asset_candidates: assets/studio-advisor.png - Real Studio state containing the live GPT-5.6 advisor response
+- asset_candidates: assets/studio-advisor.png - Capture replay of the validated three-member council UI; the live 3/3 run was tested separately
 
-narrativeRole: Show the OpenAI integration while making its authority boundary explicit.
-keyMessage: GPT-5.6 interprets deterministic evidence; it does not invent the result.
+narrativeRole: Show model diversity without weakening the deterministic authority boundary.
+keyMessage: Independent models can disagree or fail, but only validated opinions reach the lead and none can alter the result.
 
-Scene 1 (0.0-3.5s): The real advisor surface enters with the green ENABLE verdict already fixed; a custom cursor travels to `Explain with GPT-5.6` and presses once (`cursor-click-ripple`).
-Scene 2 (3.5-8.2s): Three role labels reveal in sequence around the surface: `ENGINE: CALCULATE`, `GPT-5.6: EXPLAIN`, `USER: CONFIRM`.
-Scene 3 (8.2-12.8s): The captured advisor paragraph receives a moving reading mask from left to right; the measured `-4.4%` and `29.45 GB` phrases glow only when named (`asr-keyword-glow`).
-Scene 4 (12.8-16.0s): A thin lock line closes beneath the verdict: `INVALID EXPERIMENT IDS ARE REJECTED`; hold on the real response.
+Scene 1 (0.0-3.8s): The advisor surface enters with the green ENABLE verdict already fixed.
+Scene 2 (3.8-10.8s): Xiaomi MiMo and DeepSeek appear as parallel scouts, followed by GPT-5.6 as the synthesis lead.
+Scene 3 (10.8-15.8s): `3 / 3 VALIDATED QUORUM` resolves beside the council while the measured report remains unchanged.
+Scene 4 (15.8-20.1s): A lock line closes beneath the frame: `ENGINE OWNS NUMBERS · COMMANDS · EXPERIMENT IDS`.
 
 ## Frame 6 - From verdict to Windows run
 

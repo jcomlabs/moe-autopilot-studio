@@ -591,172 +591,217 @@
     {
       "frame": 5,
       "path": "assets/voice/05.wav",
-      "duration_s": 15.979,
+      "duration_s": 20.139,
       "words": [
         {
-          "text": "GPT-5.6",
+          "text": "Two",
           "start": 0.08,
-          "end": 0.437
+          "end": 0.371
         },
         {
-          "text": "does",
-          "start": 0.515,
-          "end": 0.836
+          "text": "independent",
+          "start": 0.435,
+          "end": 0.818
         },
         {
-          "text": "the",
-          "start": 0.906,
-          "end": 1.214
+          "text": "scouts,",
+          "start": 0.903,
+          "end": 1.409
         },
         {
-          "text": "language",
-          "start": 1.282,
-          "end": 1.651
+          "text": "Xiaomi",
+          "start": 1.521,
+          "end": 1.846
         },
         {
-          "text": "work,",
-          "start": 1.732,
-          "end": 2.244
-        },
-        {
-          "text": "not",
-          "start": 2.356,
-          "end": 2.664
-        },
-        {
-          "text": "the",
-          "start": 2.732,
-          "end": 3.04
-        },
-        {
-          "text": "arithmetic.",
-          "start": 3.108,
-          "end": 3.949
-        },
-        {
-          "text": "Through",
-          "start": 4.133,
-          "end": 4.49
-        },
-        {
-          "text": "Codex",
-          "start": 4.569,
-          "end": 4.901
-        },
-        {
-          "text": "App",
-          "start": 4.974,
-          "end": 5.282
-        },
-        {
-          "text": "Server",
-          "start": 5.35,
-          "end": 5.695
+          "text": "MiMo",
+          "start": 1.918,
+          "end": 2.221
         },
         {
           "text": "and",
-          "start": 5.77,
-          "end": 6.078
+          "start": 2.287,
+          "end": 2.578
         },
         {
-          "text": "ChatGPT",
-          "start": 6.146,
-          "end": 6.503
+          "text": "DeepSeek,",
+          "start": 2.642,
+          "end": 3.172
         },
         {
-          "text": "OAuth,",
-          "start": 6.581,
-          "end": 7.105
-        },
-        {
-          "text": "it",
-          "start": 7.22,
-          "end": 7.516
-        },
-        {
-          "text": "explains",
-          "start": 7.581,
-          "end": 7.95
+          "text": "review",
+          "start": 3.288,
+          "end": 3.614
         },
         {
           "text": "the",
-          "start": 8.032,
-          "end": 8.34
+          "start": 3.685,
+          "end": 3.977
         },
         {
-          "text": "structured",
-          "start": 8.407,
-          "end": 8.801
+          "text": "same",
+          "start": 4.041,
+          "end": 4.343
+        },
+        {
+          "text": "bounded",
+          "start": 4.41,
+          "end": 4.747
         },
         {
           "text": "report",
-          "start": 8.887,
-          "end": 9.232
+          "start": 4.821,
+          "end": 5.147
         },
         {
-          "text": "and",
-          "start": 9.308,
-          "end": 9.616
+          "text": "in",
+          "start": 5.218,
+          "end": 5.498
         },
         {
-          "text": "proposes",
-          "start": 9.683,
-          "end": 10.053
+          "text": "parallel.",
+          "start": 5.559,
+          "end": 6.331
+        },
+        {
+          "text": "GPT-5.6",
+          "start": 6.5,
+          "end": 6.838
+        },
+        {
+          "text": "synthesizes",
+          "start": 6.912,
+          "end": 7.295
         },
         {
           "text": "only",
-          "start": 10.134,
-          "end": 10.454
+          "start": 7.379,
+          "end": 7.682
         },
         {
-          "text": "experiments",
-          "start": 10.524,
-          "end": 10.93
+          "text": "validated",
+          "start": 7.748,
+          "end": 8.109
         },
         {
-          "text": "the",
-          "start": 11.019,
-          "end": 11.327
-        },
-        {
-          "text": "engine",
-          "start": 11.395,
-          "end": 11.739
-        },
-        {
-          "text": "already",
-          "start": 11.815,
-          "end": 12.172
-        },
-        {
-          "text": "produced.",
-          "start": 12.25,
-          "end": 13.067
+          "text": "opinions.",
+          "start": 8.188,
+          "end": 8.959
         },
         {
           "text": "The",
-          "start": 13.246,
-          "end": 13.554
+          "start": 9.129,
+          "end": 9.42
         },
         {
-          "text": "verdict",
-          "start": 13.622,
-          "end": 13.979
+          "text": "engine",
+          "start": 9.484,
+          "end": 9.809
         },
         {
-          "text": "cannot",
-          "start": 14.057,
-          "end": 14.402
+          "text": "still",
+          "start": 9.881,
+          "end": 10.195
         },
         {
-          "text": "be",
-          "start": 14.478,
-          "end": 14.774
+          "text": "owns",
+          "start": 10.264,
+          "end": 10.567
         },
         {
-          "text": "overwritten.",
-          "start": 14.839,
-          "end": 15.692
+          "text": "every",
+          "start": 10.633,
+          "end": 10.948
+        },
+        {
+          "text": "number,",
+          "start": 11.017,
+          "end": 11.523
+        },
+        {
+          "text": "command,",
+          "start": 11.634,
+          "end": 12.153
+        },
+        {
+          "text": "and",
+          "start": 12.266,
+          "end": 12.558
+        },
+        {
+          "text": "experiment",
+          "start": 12.622,
+          "end": 12.993
+        },
+        {
+          "text": "ID.",
+          "start": 13.075,
+          "end": 13.778
+        },
+        {
+          "text": "In",
+          "start": 13.932,
+          "end": 14.211
+        },
+        {
+          "text": "the",
+          "start": 14.273,
+          "end": 14.564
+        },
+        {
+          "text": "live",
+          "start": 14.628,
+          "end": 14.931
+        },
+        {
+          "text": "test,",
+          "start": 14.997,
+          "end": 15.481
+        },
+        {
+          "text": "all",
+          "start": 15.587,
+          "end": 15.878
+        },
+        {
+          "text": "three",
+          "start": 15.942,
+          "end": 16.256
+        },
+        {
+          "text": "agreed.",
+          "start": 16.325,
+          "end": 17.074
+        },
+        {
+          "text": "No",
+          "start": 17.238,
+          "end": 17.518
+        },
+        {
+          "text": "model",
+          "start": 17.579,
+          "end": 17.893
+        },
+        {
+          "text": "can",
+          "start": 17.962,
+          "end": 18.254
+        },
+        {
+          "text": "overwrite",
+          "start": 18.318,
+          "end": 18.678
+        },
+        {
+          "text": "the",
+          "start": 18.757,
+          "end": 19.048
+        },
+        {
+          "text": "verdict.",
+          "start": 19.112,
+          "end": 19.872
         }
       ],
       "word_timing_source": "estimated_from_locked_script"
