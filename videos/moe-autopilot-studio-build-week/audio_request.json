@@ -20,7 +20,7 @@
     },
     {
       "id": "05",
-      "text": "GPT-5.6 does the language work, not the arithmetic. Through Codex App Server and ChatGPT OAuth, it explains the structured report and proposes only experiments the engine already produced. The verdict cannot be overwritten."
+      "text": "Two independent scouts, Xiaomi MiMo and DeepSeek, review the same bounded report in parallel. GPT-5.6 synthesizes only validated opinions. The engine still owns every number, command, and experiment ID. In the live test, all three agreed. No model can overwrite the verdict."
     },
     {
       "id": "06",

@@ -1,6 +1,6 @@
 # Build Week demo source
 
-This directory contains the reproducible source for the 109-second English
+This directory contains the reproducible source for the 113-second English
 MoE Autopilot Studio demonstration. It uses real captures from the packaged
 Windows application, deterministic HTML compositions, generated narration,
 and checked-in caption timings. It contains no music, prompt history,
@@ -18,19 +18,21 @@ npm run render
 ```
 
 `npm run capture:studio` refreshes application screenshots from a Studio
-instance at `http://127.0.0.1:18770`. Generated renders, snapshots, raw capture,
+instance at `http://127.0.0.1:18771`. Generated renders, snapshots, raw capture,
 tool instructions, and `node_modules` are intentionally ignored by Git.
 
 ## Provenance
 
-- Product captures: MoE Autopilot Studio 0.1.2, fixture and live advisor paths.
+- Product captures: MoE Autopilot Studio 0.2.0 fixture paths. The council image
+  is a credential-free capture replay of the separately validated live 3/3 run.
 - Narration: Kokoro `af_heart`, generated locally from `SCRIPT.md`.
 - Captions: derived from the locked script because a word-level Whisper runtime
   was unavailable; the derivation is recorded in `audio_meta.json`.
 - Visual composition: authored during Build Week with HyperFrames 0.7.64.
 - Music: none.
 
-The normalized master is published separately as a release asset:
+The final master was rendered and validated locally. It is intended for a
+separate release asset after owner review:
 
-- Name: `MoE-Autopilot-Studio-Build-Week-demo.mp4`
-- SHA-256: `52d8a1cedb4a2e9111e21056ea526c57fbd5063bc27713b3329086941a6a89b7`
+- Name: `moe-autopilot-studio-build-week-v2.mp4`
+- SHA-256: `566db2cc4ab9607f7e58dbac7208306c6cbe12a8c8a4522fd84896543aad07e3`
